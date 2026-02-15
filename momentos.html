@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENA Portal Elite - Los 6 Momentos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_elite.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">SENA <span>PORTAL</span></a>
+        <ul class="navbar-nav">
+            <li><a href="index.html" class="navbar-link">Inicio</a></li>
+            <li><a href="momentos.html" class="navbar-link">Momentos</a></li>
+            <li><a href="roles.html" class="navbar-link">Roles</a></li>
+            <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
+            <li><a href="formatos.html" class="navbar-link">Formatos</a></li>
+            <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-wrapper">
+        <header class="hero">
+            <div class="hero-text">
+                <div class="hero-meta">PROCESO DE SEGUIMIENTO</div>
+                <h1>Los 6 Momentos Clave</h1>
+                <p>Guía paso a paso para el acompañamiento integral del aprendiz desde la inducción hasta la
+                    certificación de su Etapa Productiva.</p>
+            </div>
+        </header>
+
+        <section class="card">
+            <h2><i class="fas fa-stream"></i> Flujo del Proceso</h2>
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="num">1</div>
+                    <div>Taller Vida Laboral</div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="num">2</div>
+                    <div>Taller Bitácoras</div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="num">3</div>
+                    <div>Visita Concertación</div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="num">4</div>
+                    <div>Visita Parcial</div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="num">5</div>
+                    <div>Visita Final</div>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="num">6</div>
+                    <div>Depuración</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="timeline">
+            <!-- Momento 1 -->
+            <div class="timeline-item">
+                <span class="timeline-badge badge-m1">MOMENTO 1</span>
+                <h3>Taller de Vida Laboral</h3>
+                <p><strong>Cuándo:</strong> 4 meses antes de finalizar la etapa lectiva.</p>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span><i class="fas fa-cogs"></i> Paso 1: Preparación del Taller</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Programar el taller, agendar espacios y preparar la presentación sobre alternativas de EP y
+                            derechos/deberes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Momento 2 -->
+            <div class="timeline-item">
+                <span class="timeline-badge badge-m2">MOMENTO 2</span>
+                <h3>Taller de Bitácoras</h3>
+                <p><strong>Cuándo:</strong> 15 días antes de finalizar la etapa lectiva.</p>
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span><i class="fas fa-file-alt"></i> Paso 2: Instrucción del Formato F-147</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Capacitar en el diligenciamiento de bitácoras y verificar que todos tengan su alternativa
+                            definida.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Momento 3 -->
+            <div class="timeline-item">
+                <span class="timeline-badge badge-m3">MOMENTO 3</span>
+                <h3>Visita de Concertación</h3>
+                <p><strong>Cuándo:</strong> Primeros 15 días hábiles del inicio de EP.</p>
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span><i class="fas fa-handshake"></i> Paso 3: Definición del Plan de Trabajo</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Diligenciar el F023 versión Concertación y socializar las competencias a desarrollar en la
+                            empresa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adding more moments incrementally if needed, but for now summarizing to keep it lean -->
+            <div class="timeline-item">
+                <span class="timeline-badge badge-m4">MOMENTO 4 & 5</span>
+                <h3>Seguimiento y Evaluación Final</h3>
+                <p>Visitas obligatorias para verificar el progreso (Parcial) y el cumplimiento total (Final).</p>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita Parcial (Mes 3 aprox)
+                    </li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita Final (Cierre EP)</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 - Portal Elite del Instructor SENA</p>
+        </footer>
+    </main>
+
+    <script src="main_elite.js"></script>
+</body>
+
+</html>
