@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Alternativas Étapa Productiva</title>
+    <title>SENA Portal Elite - Gestión de Alternativas EP</title>
     <meta name="description"
-        content="Modalidades legales para el desarrollo de la Etapa Productiva según el Reglamento del Aprendiz.">
+        content="Marco legal y criterios de supervisión para las 7 alternativas de Etapa Productiva.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
@@ -31,50 +31,82 @@
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">MODALIDADES DE DESARROLLO</div>
-                <h1>Rutas de Práctica Legal</h1>
-                <p>Definición y requisitos de las 7 alternativas para la ejecución de la Etapa Productiva.</p>
+                <div class="hero-meta">MODALIDADES E INSTRUCCIÓN</div>
+                <h1>Alternativas y Criterios Técnicos</h1>
+                <p>Análisis de las rutas legales de práctica: lo que el instructor debe supervisar en cada modalidad.
+                </p>
             </div>
         </header>
 
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
+        <section class="card-grid"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:2rem;">
+            <!-- Contrato de Aprendizaje -->
             <div class="elite-card green">
                 <i class="fas fa-briefcase"></i>
                 <h4>Contrato de Aprendizaje</h4>
-                <p>La modalidad más común, regulada por la Ley 789 de 2002. Incluye apoyo de sostenimiento y ARL/EPS por
-                    parte de la empresa.</p>
+                <p>Regulado por Ley 789 de 2002. Es una relación especial dentro del Derecho Laboral.</p>
+                <div class="subsection" style="font-size:0.85rem; margin-top:1rem;">
+                    <strong>Foco del Instructor:</strong>
+                    <ul style="padding-left:1rem;">
+                        <li>Verificar pago de ARL y EPS por la empresa.</li>
+                        <li>Validar que las funciones cumplan con el programa.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="elite-card blue">
-                <i class="fas fa-project-diagram"></i>
-                <h4>Proyecto Productivo</h4>
-                <p>Desarrollo de una solución técnica o empresarial definida por el aprendiz, con tutoría constante del
-                    SENA.</p>
-            </div>
-            <div class="elite-card orange">
-                <i class="fas fa-university"></i>
-                <h4>Pasantía Institucional</h4>
-                <p>Apoyo técnico en entidades estatales, ONGs o el mismo SENA, sin contrato de aprendizaje pero con acta
-                    de concertación.</p>
-            </div>
+
+            <!-- Vínculo Laboral -->
             <div class="elite-card blue">
                 <i class="fas fa-users-cog"></i>
                 <h4>Vínculo Laboral</h4>
-                <p>Validación de la labor actual del aprendiz si esta coincide con el programa de formación profesional.
-                </p>
+                <p>Validación de la labor actual si coincide con el perfil de egreso.</p>
+                <div class="subsection" style="font-size:0.85rem; margin-top:1rem;">
+                    <strong>Requisito Docente:</strong>
+                    <ul style="padding-left:1rem;">
+                        <li>Exigir Cámara de Comercio y RUT (Empresas legalmente constituidas).</li>
+                        <li>El aprendiz NO debe tener planes de mejoramiento.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="info-box warning" style="margin-top:3rem;">
+            <!-- Proyecto Productivo -->
+            <div class="elite-card orange">
+                <i class="fas fa-project-diagram"></i>
+                <h4>Proyecto Productivo</h4>
+                <p>Emprendimiento o unidades de producción de centro.</p>
+                <div class="subsection" style="font-size:0.85rem; margin-top:1rem;">
+                    <strong>Labor de Seguimiento:</strong>
+                    <ul style="padding-left:1rem;">
+                        <li>Asesoría técnica semanal sobre el avance del proyecto.</li>
+                        <li>Verificar sustentación final ante comité.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pasantía -->
+            <div class="elite-card green">
+                <i class="fas fa-university"></i>
+                <h4>Pasantía Institucional</h4>
+                <p>Apoyo en sector público, ONGs o entidades sin ánimo de lucro.</p>
+                <div class="subsection" style="font-size:0.85rem; margin-top:1rem;">
+                    <strong>Control del Instructor:</strong>
+                    <ul style="padding-left:1rem;">
+                        <li>Asegurar firma de Acta de Concertación Interna.</li>
+                        <li>No hay pago de apoyo, pero sí ARL por el SENA.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="info-box warning" style="margin-top:4rem;">
             <i class="fas fa-exclamation-triangle"></i>
             <div>
-                <strong>Aviso Normativo: Cambio de Alternativa</strong>
-                <p>El aprendiz puede solicitar el cambio de alternativa una sola vez mediante el formato GFPI-F-165,
-                    siempre que justifique la causa técnica o administrativa.</p>
+                <strong>Alerta Normativa: Monitorías</strong>
+                <p>El instructor de seguimiento también evalúa las monitorías de centro si estas se validan como Etapa
+                    Productiva. Requiere resolución de designación vigente.</p>
             </div>
         </div>
 
-        <footer class="footer"
-            style="margin-top:5rem; text-align:center; padding:3rem; color:var(--text-muted); border-top:var(--border-soft);">
+        <footer class="footer">
             <p>© 2025 - Portal Elite del Instructor SENA</p>
         </footer>
     </main>
@@ -83,16 +115,18 @@
     <button id="btn-back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
     <div id="ai-fab"><i class="fas fa-robot"></i></div>
     <div id="chat-window" class="chat-window">
+        <!-- Chat header and body as before -->
         <div class="chat-header">
             <span><b>SENA_INST_BOT</b> Assistant</span>
             <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
                     class="fas fa-times"></i></button>
         </div>
         <div id="chat-body" class="chat-body">
-            <div class="msg bot">Instructor, ¿necesita asesorar sobre Monitoría o Proyecto Productivo?</div>
+            <div class="msg bot">Instructor, ¿necesita asesoría sobre la validez de un Vínculo Laboral para un aprendiz?
+            </div>
         </div>
         <div class="chat-footer">
-            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte sobre alternativas...">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Consulte alternativas...">
             <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
