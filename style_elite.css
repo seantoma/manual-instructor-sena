@@ -888,3 +888,43 @@ tr:hover { background: #f8faf9; }
 }
 
 .card h2 i { color: var(--sena-verde); }
+/* Scroll to Top Button */
+#btn-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--sena-verde);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10001;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+#btn-back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: var(--sena-azul-midnight);
+    box-shadow: 0 8px 25px rgba(57, 169, 0, 0.3);
+}
+
+/* Responsive Table Container */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.table-container table {
+    min-width: 600px; /* Asegura que la tabla no se colapse demasiado en móvil */
+}

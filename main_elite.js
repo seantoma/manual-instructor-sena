@@ -65,7 +65,28 @@ function simularFechas() {
         tabla.innerHTML = "";
         const addRow = (momento, hito, fecha, norma) => {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td><strong>${momento}</strong></td><td>${hito}</td><td>${fecha.toLocaleDateString()}</td><td><small>${norma}</small></td>`;
+            
+            const tdMomento = document.createElement('td');
+            const strong = document.createElement('strong');
+            strong.textContent = momento;
+            tdMomento.appendChild(strong);
+            
+            const tdHito = document.createElement('td');
+            tdHito.textContent = hito;
+            
+            const tdFecha = document.createElement('td');
+            tdFecha.textContent = fecha.toLocaleDateString();
+            
+            const tdNorma = document.createElement('td');
+            const small = document.createElement('small');
+            small.textContent = norma;
+            tdNorma.appendChild(small);
+            
+            tr.appendChild(tdMomento);
+            tr.appendChild(tdHito);
+            tr.appendChild(tdFecha);
+            tr.appendChild(tdNorma);
+            
             tabla.appendChild(tr);
         };
 
@@ -101,26 +122,22 @@ function calcularHoras() {
 }
 
 // Initialize components on load
-document.addEventListener('DOMContentLoaded', () => {
-    // Check for progress on load
-    updateProgress();
-    
-    // Set active link in navbar based on current page
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.navbar-link').forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
+    // Scroll to top button logic
+    const btnBackToTop = document.getElementById('btn-back-to-top');
+    if (btnBackToTop) {
+        window.onscroll = function () {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                btnBackToTop.style.display = "flex";
+            } else {
+                btnBackToTop.style.display = "none";
+            }
+        };
 
-    // Auto-dismiss notification if exists
-    const toast = document.querySelector('.toast-notification');
-    if (toast) {
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            setTimeout(() => toast.style.display = 'none', 500);
-        }, 8000);
+        btnBackToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
 });

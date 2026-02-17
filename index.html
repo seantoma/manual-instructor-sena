@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SENA Portal Elite - Inicio</title>
+    <meta name="description"
+        content="Portal integral para instructores SENA. Gestión de Etapa Productiva, normativa y herramientas.">
+    <meta name="keywords" content="SENA, Instructor, Etapa Productiva, Guía 040, Aprendiz">
+    <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
         rel="stylesheet">
@@ -48,7 +52,8 @@
                         Los aprendices pueden agendar su visita escaneando este código.
                     </div>
                 </div>
-                <a href="https://outlook.office365.com/bookings/" target="_blank" class="btn-white">Gestionar
+                <a href="https://outlook.office365.com/bookings/" target="_blank" rel="noopener"
+                    class="btn-white">Gestionar
                     Calendario</a>
             </div>
         </header>
@@ -146,13 +151,11 @@
         </footer>
     </main>
 
-    <div class="toast-notification">
-        <div class="toast-icon"><i class="fas fa-bell"></i></div>
-        <div class="toast-content">
-            <h5>Revisiones Activas</h5>
-            <p>Recuerde verificar sus bitácoras pendientes en Zajuna.</p>
-        </div>
     </div>
+
+    <button id="btn-back-to-top" title="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="main_elite.js"></script>
 </body>
