@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENA Portal Elite - Guía Master de Procesos EP</title>
+    <meta name="description" content="Manual de supervisión técnica exhaustivo para instructores de Etapa Productiva.">
+    <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_elite.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">SENA <span>INSTRUCTOR ELITE</span></a>
+        <ul class="navbar-nav">
+            <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="guia_master.html" class="navbar-link active">Guía Master</a></li>
+            <li><a href="herramientas.html" class="navbar-link">Calculadora</a></li>
+            <li><a href="formatos.html" class="navbar-link">Repositorio</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-wrapper">
+        <header class="hero">
+            <div class="hero-text">
+                <div class="hero-meta">PROTOCOLO TÉCNICO V2.1</div>
+                <h1>Guía Master de Supervisión</h1>
+                <p>La ruta crítica del docente: de la inducción al juicio evaluativo. Replique el rigor del manual del
+                    aprendiz con ojos de auditor técnico.</p>
+            </div>
+        </header>
+
+        <section class="timeline">
+            <!-- MÓDULO 1: ALISTAMIENTO (Espejo de Inducción) -->
+            <div class="timeline-item" style="border-left: 5px solid var(--accent-indigo);">
+                <span class="timeline-badge" style="background:var(--accent-indigo)">FASE 01: INDUCCIÓN Y
+                    ALISTAMIENTO</span>
+                <h3>Supervisión Preliminar</h3>
+                <p>El instructor debe garantizar que el aprendiz inicie bajo condiciones legales óptimas.</p>
+                <div class="info-box info">
+                    <i class="fas fa-check-double"></i>
+                    <div>
+                        <strong>Control de Calidad Inicial</strong>
+                        <ul style="padding-left:1rem; font-size:0.9rem;">
+                            <li>Verificar el 100% de los RAP de Etapa Lectiva aprobados.</li>
+                            <li>Confirmar el estado "En Formación" en SofiaPlus.</li>
+                            <li>Asegurar que el aprendiz asistió al Taller de Vida Laboral (Momento 1).</li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar alternativa seleccionada
+                        (F165).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar registro de contrato en
+                        Caprendizaje (si aplica).</li>
+                </ul>
+            </div>
+
+            <!-- MÓDULO 2: CONCERTACIÓN (Espejo de Plan de Práctica) -->
+            <div class="timeline-item" style="border-left: 5px solid var(--sena-verde);">
+                <span class="timeline-badge" style="background:var(--sena-verde)">FASE 02: CONCERTACIÓN DEL PLAN</span>
+                <h3>Visita de Concertación (F023 Parte 1)</h3>
+                <p>Es la base del contrato pedagógico. El instructor define qué Rap se evaluarán según las funciones de
+                    la empresa.</p>
+                <div class="card" style="margin-top:1.5rem; background: #f0fdf4; border: 1px solid #bbf7d0;">
+                    <h5><i class="fas fa-exclamation-circle"></i> Plazo Legal Docente</h5>
+                    <p style="font-size:0.9rem;">Debe realizarse en los **primeros 15 días hábiles** tras el inicio de
+                        la Etapa Productiva. El retraso invalida el seguimiento.</p>
+                </div>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Definir Plan de Trabajo en el F023.
+                    </li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Obtener firmas digitales/físicas
+                        legitimadas del Jefe Inmediato.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar afiliación a ARL del aprendiz.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- MÓDULO 3: SEGUIMIENTO (Espejo de Bitácoras) -->
+            <div class="timeline-item" style="border-left: 5px solid var(--accent-amber);">
+                <span class="timeline-badge" style="background:var(--accent-amber)">FASE 03: SEGUIMIENTO Y
+                    BITÁCORAS</span>
+                <h3>Auditoría de Evidencias (F147)</h3>
+                <p>Supervisión del cumplimiento rítmico del aprendiz. El instructor actúa como auditor de calidad
+                    técnica.</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Elemento de Revisión</th>
+                                <th>Criterio de Calidad Docente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>**Frecuencia**</td>
+                                <td>Cada 15 días o mensual según centro.</td>
+                            </tr>
+                            <tr>
+                                <td>**Contenido**</td>
+                                <td>Relación directa con competencias del programa.</td>
+                            </tr>
+                            <tr>
+                                <td>**Validación**</td>
+                                <td>Debe tener sello y firma de la empresa.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Retroalimentar bitácoras en
+                        SofiaPlus/Drive (**Máximo 5 días**).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita de Seguimiento Parcial
+                        (Mes 3).</li>
+                </ul>
+            </div>
+
+            <!-- MÓDULO 4: EVALUACIÓN (Espejo de Certificación) -->
+            <div class="timeline-item" style="border-left: 5px solid var(--sena-azul-navy);">
+                <span class="timeline-badge" style="background:var(--sena-azul-navy)">FASE 04: EVALUACIÓN Y
+                    CIERRE</span>
+                <h3>Cierre Administrativo y Juicio</h3>
+                <p>Validación final de la carpeta para habilitar la certificación del aprendiz.</p>
+                <div class="info-box danger">
+                    <i class="fas fa-folder-minus"></i>
+                    <div>
+                        <strong>Documentación Obligatoria para el Cierre</strong>
+                        <ul style="padding-left:1rem; font-size:0.85rem;">
+                            <li>F023 completamente firmado (3 visitas).</li>
+                            <li>Bitácoras (F147) completas y avaladas.</li>
+                            <li>Certificado de la Empresa (con fechas y funciones).</li>
+                            <li>Constancia de paz y salvo del Centro.</li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Emitir Juicio Evaluativo en SofiaPlus
+                        (**Máximo 8 días**).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar reporte de horas ejecutadas.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 - Portal Elite del Instructor SENA | Protocolo Espejo v2.1</p>
+        </footer>
+    </main>
+
+    <!-- UI Components -->
+    <button id="btn-back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+    <div id="ai-fab"><i class="fas fa-robot"></i></div>
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <span><b>SENA_INST_BOT v2.0</b></span>
+            <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="msg bot">Instructor, ¿necesita que le ayude a validar los requisitos para el cierre de un
+                aprendiz? Mi motor de auditoría está listo.</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte sobre la Guía 040...">
+            <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="main_elite.js"></script>
+</body>
+
+</html>
