@@ -65,7 +65,7 @@ function loadPersistentChecklists() {
     }
 }
 
-// --- SENA_INST_BOT: Robust Assistant ---
+// --- SENA_INST_BOT v2.0: Advanced Auditor Logic ---
 function initInstBot() {
     const fab = document.getElementById('ai-fab');
     const win = document.getElementById('chat-window');
@@ -82,47 +82,68 @@ function initInstBot() {
     const addMsg = (text, sender) => {
         const m = document.createElement('div');
         m.className = `msg ${sender}`;
-        if (sender === 'user') {
-            m.textContent = text;
-        } else {
-            m.innerHTML = text;
-        }
+        m.innerHTML = text;
         body.appendChild(m);
         body.scrollTop = body.scrollHeight;
     };
 
     const processQuery = (q) => {
         const query = q.toLowerCase();
-        let r = "Lo siento, como asistente técnico para instructores, mi base de conocimientos se enfoca en la <b>Guía 040</b> y el <b>Acuerdo 009 de 2024</b>. ¿Podrías ser más específico?";
+        let r = "Instructor, no reconozco ese término técnico. ¿Desea consultar sobre plazos de <b>Bitácoras</b>, el formato <b>F023</b> o sanciones por <b>incumplimiento</b>?";
 
-        if (query.includes("hola") || query.includes("buenos") || query.includes("quien eres")) {
-            r = "Buen día, Instructor. Soy <b>SENA_INST_BOT</b>, su asistente técnico para la gestión de la Etapa Productiva. ¿En qué proceso normativo puedo asistirle hoy?";
-        } else if (query.includes("guia 040") || query.includes("normativa")) {
-            r = "La <b>Guía GFPI-G-040</b> establece los lineamientos para el seguimiento y evaluación. Incluye los 6 momentos clave y el uso obligatorio del Formato F023. <a href='momentos.html' style='color:var(--sena-verde)'>Ver más detalles del flujo</a>.";
-        } else if (query.includes("plazo") || query.includes("tiempo") || query.includes("dias")) {
-            r = "<b>Plazos Críticos:</b><br>• Retroinformar bitácoras: 5 días hábiles.<br>• Registro de juicio evaluativo: 8 días hábiles tras el cierre.<br>• Visita 1: Primeros 15 días tras el inicio.";
-        } else if (query.includes("formato") || query.includes("f023") || query.includes("f147")) {
-            r = "Los formatos oficiales vigentes son:<br>• <b>GFPI-F-023:</b> Planeación y Seguimiento.<br>• <b>GFPI-F-147:</b> Bitácora Mensual.<br>• <b>GFPI-F-165:</b> Cambio de Alternativa.<br><a href='formatos.html' style='color:var(--sena-verde)'>Ir al centro de descargas</a>.";
-        } else if (query.includes("visita") || query.includes("seguimiento")) {
-            r = "Debe realizar 3 visitas obligatorias: Concertación (M3), Seguimiento Parcial (M4) y Seguimiento Final (M5). Todas deben quedar soportadas en el F023 con firmas del Instructor, Aprendiz y Jefe Inmediato.";
-        } else if (query.includes("sofia") || query.includes("cargue")) {
-            r = "El cargue de evidencias se realiza en el espacio designado por su Centro (SharePoint/Territorium) y el registro de horas en SofiaPlus para el reporte de ejecución.";
-        }
+        const intents = [
+            {
+                keys: ['hola', 'buenos', 'quien eres', 'ayuda'],
+                response: "Buen día, Instructor. Soy <b>SENA_INST_BOT v2.0</b>. Mi lógica ha sido reforzada para asistirle en auditoría técnica según la <b>Guía 040</b>. ¿Qué proceso desea validar hoy?"
+            },
+            {
+                keys: ['bitacora', 'f147', 'quince', 'mensual', 'reporte'],
+                response: "<b>Auditoría de Bitácoras (F147):</b><br>• El aprendiz debe reportar cada 15 días.<br>• Usted tiene <b>5 días hábiles</b> para retroalimentar.<br>• <b>Crítico:</b> Verifique que las tareas desarrollen las competencias del programa."
+            },
+            {
+                keys: ['f023', 'planeacion', 'seguimiento', 'visita', 'concertacion'],
+                response: "<b>Seguimiento F023 (3 Visitas):</b><br>1. <b>Concertación:</b> Primeros 15 días hábiles.<br>2. <b>Parcial:</b> Mes 3 (Verificar bitácoras).<br>3. <b>Final:</b> Mes 6 (Evaluación y juicio).<br><b>Nota:</b> Todas requieren firmas del Instructor, Aprendiz y Ente Coformador."
+            },
+            {
+                keys: ['plazo', 'tiempo', 'dias', 'limite', 'vence', 'cuando'],
+                response: "<b>Plazos Legales para el Instructor:</b><br>• Registro de Juicio: 8 días hábiles tras cierre.<br>• Visita de Concertación: 15 días hábiles tras inicio.<br>• Respuesta a Bitácoras: 5 días hábiles.<br>• Comités: Según Reglamento del Aprendiz."
+            },
+            {
+                keys: ['incumplimiento', 'falla', 'sancion', 'comite', 'inasistencia', 'abandono'],
+                response: "<b>Gestión de Incumplimiento:</b><br>1. Si falla 2 bitácoras consecutivas: Reporte a Coordinación.<br>2. Inasistencia injustificada (3 días): Proceso de deserción.<br>3. Falta grave: Citación a <b>Comité de Evaluación</b> según Acuerdo 009 de 2024."
+            },
+            {
+                keys: ['sofia', 'cargue', 'evidencia', 'territorium', 'sharepoint'],
+                response: "<b>Sincronización Documental:</b><br>• Las evidencias deben reposar en el repositorio del Centro (SharePoint/Drive).<br>• El juicio evaluativo (Aprobado/Deficiente) se registra en <b>SofiaPlus</b> al cierre definitivo."
+            },
+            {
+                keys: ['cambio', 'alternativa', 'f165', 'vinculo', 'pasantia'],
+                response: "<b>Cambio de Alternativa (F165):</b><br>Requiere aval técnico del instructor y aprobación de Coordinación. El aprendiz solo puede cambiar UNA vez durante su proceso. <a href='alternativas.html' style='color:var(--sena-verde)'>Ver detalles técnicos</a>."
+            }
+        ];
 
+        let bestMatch = null;
+        let maxScore = 0;
+        intents.forEach(intent => {
+            let score = 0;
+            intent.keys.forEach(key => { if (query.includes(key)) score++; });
+            if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
+        });
+
+        if (bestMatch) r = bestMatch;
         setTimeout(() => addMsg(r, 'bot'), 500);
     };
 
     send.onclick = () => {
         if (input.value.trim()) {
-            addMsg(input.value, 'user');
-            processQuery(input.value);
+            const userMsg = input.value;
+            addMsg(userMsg, 'user');
+            processQuery(userMsg);
             input.value = "";
         }
     };
 
-    input.onkeypress = (e) => {
-        if (e.key === 'Enter') send.click();
-    };
+    input.onkeypress = (e) => { if (e.key === 'Enter') send.click(); };
 }
 
 // Legacy helpers (Accordions)
