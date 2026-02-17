@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Los 6 Momentos</title>
+    <title>SENA Portal Elite - Los 6 Momentos de Instrucción</title>
     <meta name="description"
-        content="Guía detallada de los 6 momentos clave del seguimiento a la Etapa Productiva SENA.">
-    <meta name="keywords" content="SENA, Momentos, Seguimiento, Etapa Productiva, Instructor">
+        content="Guía técnica paso a paso para el seguimiento de la Etapa Productiva por parte del Instructor.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
@@ -18,13 +17,13 @@
 
 <body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">SENA <span>PORTAL</span></a>
+        <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
         <ul class="navbar-nav">
-            <li><a href="index.html" class="navbar-link">Inicio</a></li>
-            <li><a href="momentos.html" class="navbar-link">Momentos</a></li>
+            <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="momentos.html" class="navbar-link active">Procesos</a></li>
             <li><a href="roles.html" class="navbar-link">Roles</a></li>
             <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
-            <li><a href="formatos.html" class="navbar-link">Formatos</a></li>
+            <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
         </ul>
     </nav>
@@ -32,122 +31,127 @@
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">PROCESO DE SEGUIMIENTO</div>
-                <h1>Los 6 Momentos Clave</h1>
-                <p>Guía paso a paso para el acompañamiento integral del aprendiz desde la inducción hasta la
-                    certificación de su Etapa Productiva.</p>
+                <div class="hero-meta">GUÍA OPERATIVA GFPI-G-040</div>
+                <h1>Ruta de Seguimiento Docente</h1>
+                <p>Cumplimiento normativo mediante procesos segmentados y criterios de evaluación técnica.</p>
+            </div>
+            <div class="bookings-card" style="min-width:250px;">
+                <h4 style="margin-bottom:1rem;">Progreso General</h4>
+                <div style="background:rgba(255,255,255,0.1); height:12px; border-radius:10px; overflow:hidden;">
+                    <div id="progressBar"
+                        style="width:0%; height:100%; background:var(--sena-verde); transition:0.5s; text-align:center; font-size:10px; color:white;">
+                        0%</div>
+                </div>
+                <p style="font-size:0.8rem; margin-top:10px;" id="progressText">0/0 ítems completados</p>
             </div>
         </header>
 
-        <section class="card">
-            <h2><i class="fas fa-stream"></i> Flujo del Proceso</h2>
-            <div class="process-flow">
-                <div class="process-step">
-                    <div class="num">1</div>
-                    <div>Taller Vida Laboral</div>
-                </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="num">2</div>
-                    <div>Taller Bitácoras</div>
-                </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="num">3</div>
-                    <div>Visita Concertación</div>
-                </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="num">4</div>
-                    <div>Visita Parcial</div>
-                </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="num">5</div>
-                    <div>Visita Final</div>
-                </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="num">6</div>
-                    <div>Depuración</div>
-                </div>
-            </div>
-        </section>
-
+        <!-- Segmented Steps -->
         <div class="timeline">
-            <!-- Momento 1 -->
+            <!-- Paso 1 -->
             <div class="timeline-item">
-                <span class="timeline-badge badge-m1">MOMENTO 1</span>
-                <h3>Taller de Vida Laboral</h3>
-                <p><strong>Cuándo:</strong> 4 meses antes de finalizar la etapa lectiva.</p>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span><i class="fas fa-cogs"></i> Paso 1: Preparación del Taller</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Programar el taller, agendar espacios y preparar la presentación sobre alternativas de EP y
-                            derechos/deberes.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Momento 2 -->
-            <div class="timeline-item">
-                <span class="timeline-badge badge-m2">MOMENTO 2</span>
-                <h3>Taller de Bitácoras</h3>
-                <p><strong>Cuándo:</strong> 15 días antes de finalizar la etapa lectiva.</p>
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span><i class="fas fa-file-alt"></i> Paso 2: Instrucción del Formato F-147</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Capacitar en el diligenciamiento de bitácoras y verificar que todos tengan su alternativa
-                            definida.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Momento 3 -->
-            <div class="timeline-item">
-                <span class="timeline-badge badge-m3">MOMENTO 3</span>
-                <h3>Visita de Concertación</h3>
-                <p><strong>Cuándo:</strong> Primeros 15 días hábiles del inicio de EP.</p>
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span><i class="fas fa-handshake"></i> Paso 3: Definición del Plan de Trabajo</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Diligenciar el F023 versión Concertación y socializar las competencias a desarrollar en la
-                            empresa.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Adding more moments incrementally if needed, but for now summarizing to keep it lean -->
-            <div class="timeline-item">
-                <span class="timeline-badge badge-m4">MOMENTO 4 & 5</span>
-                <h3>Seguimiento y Evaluación Final</h3>
-                <p>Visitas obligatorias para verificar el progreso (Parcial) y el cumplimiento total (Final).</p>
+                <span class="timeline-badge" style="background:var(--sena-azul-navy)">PASO 1</span>
+                <h3>Inducción y Taller de Vida Laboral</h3>
+                <p><b>Responsabilidad:</b> Alistamiento administrativo y orientación inicial.</p>
                 <ul class="checklist">
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita Parcial (Mes 3 aprox)
-                    </li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita Final (Cierre EP)</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Programar taller (4 meses antes de fin
+                        de lectiva).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Socializar alternativas de Etapa
+                        Productiva.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Orientar sobre deberes y derechos del
+                        aprendiz.</li>
+                </ul>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="timeline-item">
+                <span class="timeline-badge" style="background:var(--sena-azul-navy)">PASO 2</span>
+                <h3>Capacitación en Registro de Bitácoras</h3>
+                <p><b>Responsabilidad:</b> Instrucción técnica sobre el Formato F-147.</p>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Capacitar en diligenciamiento del
+                        F147.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar selección de alternativa en
+                        Caprendizaje.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar afiliación a ARL/EPS del
+                        aprendiz.</li>
+                </ul>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="timeline-item" style="border-left: 5px solid var(--sena-verde);">
+                <span class="timeline-badge" style="background:var(--sena-verde)">PASO 3</span>
+                <h3>Visita de Concertación (Crucial)</h3>
+                <p><b>Meta:</b> Definir el plan de capacitación en la empresa.</p>
+                <div class="info-box info" style="margin:1rem 0;">
+                    <i class="fas fa-calendar-alt"></i>
+                    <p><b>Plazo Legal:</b> Primeros 15 días hábiles del inicio de la EP.</p>
+                </div>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Diligenciar F023 (Sección
+                        Concertación).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Definir competencias y funciones
+                        laborales.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Obtener firmas de las 3 partes
+                        (Instructor, Aprendiz, Jefe).</li>
+                </ul>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="timeline-item">
+                <span class="timeline-badge" style="background:var(--accent-amber)">PASO 4</span>
+                <h3>Seguimiento Parcial</h3>
+                <p><b>Meta:</b> Verificación de avances y retroalimentación de bitácoras.</p>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Revisar bitácoras mensuales (Plazo: 5
+                        días hábiles).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar segunda visita técnica de
+                        seguimiento.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Diligenciar F023 (Sección
+                        Seguimiento).</li>
+                </ul>
+            </div>
+
+            <!-- Paso 5 -->
+            <div class="timeline-item">
+                <span class="timeline-badge" style="background:var(--accent-indigo)">PASO 5</span>
+                <h3>Evaluación Final y Cierre</h3>
+                <p><b>Meta:</b> Emisión de juicio evaluativo y certificación.</p>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita Final y F023 (Sección
+                        Evaluación).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar entrega de certificado laboral
+                        de la empresa.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Registrar juicio en SofiaPlus (8 días
+                        hábiles).</li>
                 </ul>
             </div>
         </div>
 
-        <footer class="footer">
+        <footer class="footer"
+            style="margin-top:5rem; text-align:center; padding:3rem; color:var(--text-muted); border-top:var(--border-soft);">
             <p>© 2025 - Portal Elite del Instructor SENA</p>
         </footer>
     </main>
 
-    <button id="btn-back-to-top" title="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- UI Components -->
+    <button id="btn-back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+    <div id="ai-fab"><i class="fas fa-robot"></i></div>
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <span><b>SENA_INST_BOT</b> Assistant</span>
+            <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="msg bot">Instructor, ¿desea revisar los criterios de evaluación del Momento 5 o tiene dudas
+                sobre el Formato F023?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Consulte la Guía 040...">
+            <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script src="main_elite.js"></script>
 </body>

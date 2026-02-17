@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Alternativas de EP</title>
-    <meta name="description" content="Conozca las alternativas legales para realizar su Etapa Productiva en el SENA.">
-    <meta name="keywords" content="SENA, Alternativas, Contrato Aprendizaje, Pasantía">
+    <title>SENA Portal Elite - Alternativas Étapa Productiva</title>
+    <meta name="description"
+        content="Modalidades legales para el desarrollo de la Etapa Productiva según el Reglamento del Aprendiz.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
@@ -17,13 +17,13 @@
 
 <body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">SENA <span>PORTAL</span></a>
+        <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
         <ul class="navbar-nav">
-            <li><a href="index.html" class="navbar-link">Inicio</a></li>
-            <li><a href="momentos.html" class="navbar-link">Momentos</a></li>
+            <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
             <li><a href="roles.html" class="navbar-link">Roles</a></li>
-            <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
-            <li><a href="formatos.html" class="navbar-link">Formatos</a></li>
+            <li><a href="alternativas.html" class="navbar-link active">Alternativas</a></li>
+            <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
         </ul>
     </nav>
@@ -31,52 +31,71 @@
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">OPCIONES DE PRÁCTICA</div>
-                <h1>Alternativas de Etapa Productiva</h1>
-                <p>Explore las diferentes modalidades autorizadas por el SENA para que el aprendiz aplique sus
-                    competencias en el entorno productivo real.</p>
+                <div class="hero-meta">MODALIDADES DE DESARROLLO</div>
+                <h1>Rutas de Práctica Legal</h1>
+                <p>Definición y requisitos de las 7 alternativas para la ejecución de la Etapa Productiva.</p>
             </div>
         </header>
 
-        <section class="card">
-            <h2><i class="fas fa-list-ul"></i> Principales Modalidades</h2>
-            <dl class="def-list">
-                <dt>Contrato de Aprendizaje</dt>
-                <dd>Modalidad especial de vinculación dentro del derecho laboral, sin subordinación y con apoyo de
-                    sostenimiento.</dd>
-
-                <dt>Vínculo Laboral</dt>
-                <dd>Cuando el aprendiz ya trabaja en una empresa y sus funciones corresponden al perfil del programa de
-                    formación.</dd>
-
-                <dt>Proyecto Productivo</dt>
-                <dd>Creación de una unidad productiva por parte del aprendiz, avalada por el Centro de Formación.</dd>
-
-                <dt>Pasantía (Vínculo Formativo)</dt>
-                <dd>Prácticas en entidades estatales, ONGs o sin ánimo de lucro, con carácter netamente formativo.</dd>
-
-                <dt>Monitoría</dt>
-                <dd>Apoyo en actividades del Centro de Formación debidamente reglamentadas y avaladas.</dd>
-            </dl>
-        </section>
-
-        <div class="info-box warning">
-            <i class="fas fa-exclamation-triangle"></i>
-            <div>
-                <strong>Importante - Cambio de Alternativa</strong>
-                <p>El aprendiz tiene derecho a solicitar el cambio de alternativa una sola vez por causas justificadas,
-                    con un plazo de respuesta de 15 días hábiles por parte del SENA.</p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
+            <div class="elite-card green">
+                <i class="fas fa-briefcase"></i>
+                <h4>Contrato de Aprendizaje</h4>
+                <p>La modalidad más común, regulada por la Ley 789 de 2002. Incluye apoyo de sostenimiento y ARL/EPS por
+                    parte de la empresa.</p>
+            </div>
+            <div class="elite-card blue">
+                <i class="fas fa-project-diagram"></i>
+                <h4>Proyecto Productivo</h4>
+                <p>Desarrollo de una solución técnica o empresarial definida por el aprendiz, con tutoría constante del
+                    SENA.</p>
+            </div>
+            <div class="elite-card orange">
+                <i class="fas fa-university"></i>
+                <h4>Pasantía Institucional</h4>
+                <p>Apoyo técnico en entidades estatales, ONGs o el mismo SENA, sin contrato de aprendizaje pero con acta
+                    de concertación.</p>
+            </div>
+            <div class="elite-card blue">
+                <i class="fas fa-users-cog"></i>
+                <h4>Vínculo Laboral</h4>
+                <p>Validación de la labor actual del aprendiz si esta coincide con el programa de formación profesional.
+                </p>
             </div>
         </div>
 
-        <footer class="footer">
+        <div class="info-box warning" style="margin-top:3rem;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>Aviso Normativo: Cambio de Alternativa</strong>
+                <p>El aprendiz puede solicitar el cambio de alternativa una sola vez mediante el formato GFPI-F-165,
+                    siempre que justifique la causa técnica o administrativa.</p>
+            </div>
+        </div>
+
+        <footer class="footer"
+            style="margin-top:5rem; text-align:center; padding:3rem; color:var(--text-muted); border-top:var(--border-soft);">
             <p>© 2025 - Portal Elite del Instructor SENA</p>
         </footer>
     </main>
 
-    <button id="btn-back-to-top" title="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- UI Components -->
+    <button id="btn-back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+    <div id="ai-fab"><i class="fas fa-robot"></i></div>
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <span><b>SENA_INST_BOT</b> Assistant</span>
+            <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="msg bot">Instructor, ¿necesita asesorar sobre Monitoría o Proyecto Productivo?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte sobre alternativas...">
+            <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script src="main_elite.js"></script>
 </body>

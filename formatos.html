@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Formatos y Documentación</title>
-    <meta name="description" content="Acceso a formatos institucionales para la gestión de la Etapa Productiva.">
-    <meta name="keywords" content="SENA, Formatos, GFPI-F-023, GFPI-F-147">
+    <title>SENA Portal Elite - Centro de Documentación</title>
+    <meta name="description"
+        content="Acceso a formatos institucionales oficiales para la gestión de la Etapa Productiva.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
@@ -17,13 +17,13 @@
 
 <body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">SENA <span>PORTAL</span></a>
+        <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
         <ul class="navbar-nav">
-            <li><a href="index.html" class="navbar-link">Inicio</a></li>
-            <li><a href="momentos.html" class="navbar-link">Momentos</a></li>
+            <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
             <li><a href="roles.html" class="navbar-link">Roles</a></li>
             <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
-            <li><a href="formatos.html" class="navbar-link">Formatos</a></li>
+            <li><a href="formatos.html" class="navbar-link active">Descargas</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
         </ul>
     </nav>
@@ -31,46 +31,78 @@
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">DOCUMENTACIÓN OFICIAL</div>
-                <h1>Formatos y Documentación</h1>
-                <p>Descargue y consulte los formatos institucionales requeridos para el seguimiento oportuno de la Etapa
-                    Productiva.</p>
+                <div class="hero-meta">SISTEMA INTEGRAL DE CALIDAD</div>
+                <h1>Centro de Documentación</h1>
+                <p>Repositorio oficial de formatos GFPI actualizados para el seguimiento técnico-pedagógico.</p>
             </div>
         </header>
 
-        <section class="card">
-            <h2><i class="fas fa-file-invoice"></i> Listado de Formatos</h2>
-            <div class="formato-item">
-                <div><span class="codigo">GFPI-F-023</span> - Formato Planeación, Seguimiento y Evaluación</div>
-                <a href="#" class="btn-mini">Ver Guía</a>
-            </div>
-            <div class="formato-item">
-                <div><span class="codigo">GFPI-F-147</span> - Bitácora Seguimiento Etapa Productiva</div>
-                <a href="#" class="btn-mini">Ver Guía</a>
-            </div>
-            <div class="formato-item">
-                <div><span class="codigo">GFPI-F-165</span> - Selección Modificación Alternativa EP</div>
-                <a href="#" class="btn-mini">Ver Guía</a>
+        <section
+            style="background:white; padding:3rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-elite);">
+            <h2 style="margin-bottom:2rem;"><i class="fas fa-file-download" style="color:var(--sena-verde)"></i>
+                Formatos Vigentes</h2>
+
+            <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; background:var(--bg-global); border-radius:var(--radius-md); border-left:5px solid var(--sena-verde);">
+                    <div>
+                        <strong style="font-size:1.1rem; color:var(--sena-azul-navy);">GFPI-F-023 v.3</strong>
+                        <p style="color:var(--text-muted); font-size:0.9rem;">Planeación, Seguimiento y Evaluación Etapa
+                            Productiva</p>
+                    </div>
+                    <a href="Formatos/Seleccion etapa productiva165V3.xlsx" class="btn-back-to-top"
+                        style="display:flex; position:static; width:auto; height:auto; padding:0.6rem 1.2rem; background:var(--sena-azul-navy); color:white; border-radius:8px; text-decoration:none; font-size:0.8rem;">Descargar
+                        Excel</a>
+                </div>
+
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; background:var(--bg-global); border-radius:var(--radius-md); border-left:5px solid var(--accent-amber);">
+                    <div>
+                        <strong style="font-size:1.1rem; color:var(--sena-azul-navy);">GFPI-F-147</strong>
+                        <p style="color:var(--text-muted); font-size:0.9rem;">Bitácora Mensual de Seguimiento</p>
+                    </div>
+                    <a href="#" class="btn-back-to-top"
+                        style="display:flex; position:static; width:auto; height:auto; padding:0.6rem 1.2rem; background:var(--sena-azul-navy); color:white; border-radius:8px; text-decoration:none; font-size:0.8rem;">Descargar
+                        Formato</a>
+                </div>
+
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; background:var(--bg-global); border-radius:var(--radius-md); border-left:5px solid var(--accent-indigo);">
+                    <div>
+                        <strong style="font-size:1.1rem; color:var(--sena-azul-navy);">GFPI-F-165</strong>
+                        <p style="color:var(--text-muted); font-size:0.9rem;">Solicitud de Cambio de Alternativa</p>
+                    </div>
+                    <a href="#" class="btn-back-to-top"
+                        style="display:flex; position:static; width:auto; height:auto; padding:0.6rem 1.2rem; background:var(--sena-azul-navy); color:white; border-radius:8px; text-decoration:none; font-size:0.8rem;">Descargar
+                        Formato</a>
+                </div>
             </div>
         </section>
 
-        <div class="info-box success">
-            <i class="fas fa-check-double"></i>
-            <div>
-                <strong>Custodia Documental</strong>
-                <p>Es responsabilidad del instructor garantizar que todos los formatos cuenten con las firmas digitales
-                    o físicas correspondientes antes de su cargue en la Matriz Global.</p>
-            </div>
-        </div>
-
-        <footer class="footer">
+        <footer class="footer"
+            style="margin-top:5rem; text-align:center; padding:3rem; color:var(--text-muted); border-top:var(--border-soft);">
             <p>© 2025 - Portal Elite del Instructor SENA</p>
         </footer>
     </main>
 
-    <button id="btn-back-to-top" title="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- UI Components -->
+    <button id="btn-back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+    <div id="ai-fab"><i class="fas fa-robot"></i></div>
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <span><b>SENA_INST_BOT</b> Assistant</span>
+            <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="msg bot">Instructor, ¿necesita la versión más reciente del F023 para la visita de concertación?
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte por formatos...">
+            <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script src="main_elite.js"></script>
 </body>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENA Portal Elite - Quiz Normativo</title>
+    <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style_elite.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-elite);
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .option-btn {
+            padding: 1.2rem;
+            border: var(--border-soft);
+            border-radius: var(--radius-md);
+            background: var(--bg-global);
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option-btn:hover {
+            border-color: var(--sena-verde);
+            background: rgba(57, 181, 74, 0.05);
+        }
+
+        .option-btn.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .option-btn.wrong {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: var(--border-soft);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
+        <ul class="navbar-nav">
+            <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
+            <li><a href="quiz.html" class="navbar-link active">Quiz</a></li>
+            <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
+            <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-wrapper">
+        <header class="hero">
+            <div class="hero-text">
+                <div class="hero-meta">CERTIFICACIÓN TÉCNICA INTERNA</div>
+                <h1>Desafío Guía 040</h1>
+                <p>Ponga a prueba sus conocimientos sobre plazos, formatos y responsabilidades normativas.</p>
+            </div>
+        </header>
+
+        <div class="quiz-container">
+            <div id="quiz-intro">
+                <h2 style="margin-bottom:1rem;">Bienvenido, Instructor</h2>
+                <p style="color:var(--text-muted); margin-bottom:2rem;">Este cuestionario consta de 5 preguntas críticas
+                    sobre la gestión de la Etapa Productiva. Un puntaje perfecto demuestra dominio de la Guía
+                    GFPI-G-040.</p>
+                <button onclick="startQuiz()" class="btn-back-to-top"
+                    style="display:flex; position:static; width:100%; justify-content:center; padding:1.2rem; background:var(--sena-verde); color:white; border-radius:10px; border:none; font-weight:700; cursor:pointer;">EMPEZAR
+                    QUIZ</button>
+            </div>
+
+            <div id="quiz-content" style="display:none;">
+                <div class="quiz-header">
+                    <span id="q-progress" style="font-weight:700; color:var(--sena-azul-navy);">Pregunta 1 de 5</span>
+                    <span id="q-category"
+                        style="font-size:0.8rem; background:var(--bg-global); padding:0.4rem 0.8rem; border-radius:20px;">Normativa
+                        2024</span>
+                </div>
+
+                <div id="questions-pool">
+                    <!-- Q1 -->
+                    <div class="question active" data-correct="1">
+                        <h3>¿Cuál es el plazo máximo para registrar el juicio evaluativo en SofiaPlus tras la visita
+                            final?</h3>
+                        <div class="options">
+                            <button class="option-btn" onclick="checkAnswer(this, 0)">5 días hábiles</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 1)">8 días hábiles</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 2)">15 días hábiles</button>
+                        </div>
+                    </div>
+                    <!-- Q2 -->
+                    <div class="question" data-correct="0">
+                        <h3>¿En qué momento se debe realizar la Visita de Concertación según la Guía 040?</h3>
+                        <div class="options">
+                            <button class="option-btn" onclick="checkAnswer(this, 0)">Primeros 15 días hábiles del
+                                inicio de EP</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 1)">Al finalizar el primer
+                                mes</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 2)">En el tercer momento del
+                                proceso</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-result" style="display:none; text-align:center;">
+                <i class="fas fa-trophy" style="font-size:4rem; color:#ffc107; margin-bottom:1.5rem;"></i>
+                <h2 id="result-title">¡Excelente Desempeño!</h2>
+                <p id="result-text" style="margin-bottom:2rem;">Ha demostrado un conocimiento sólido de los procesos
+                    institucionales.</p>
+                <a href="index.html" class="btn-back-to-top"
+                    style="display:flex; position:static; text-decoration:none; justify-content:center; padding:1.2rem; background:var(--sena-azul-navy); color:white; border-radius:10px; font-weight:700;">VOLVER
+                    AL DASHBOARD</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentQ = 1;
+        const totalQ = 2; // Testing with 2 first
+
+        function startQuiz() {
+            document.getElementById('quiz-intro').style.display = 'none';
+            document.getElementById('quiz-content').style.display = 'block';
+        }
+
+        function checkAnswer(btn, idx) {
+            const currentQuestionEl = document.querySelectorAll('.question')[currentQ - 1];
+            const correctIdx = parseInt(currentQuestionEl.getAttribute('data-correct'));
+
+            const btns = currentQuestionEl.querySelectorAll('.option-btn');
+            btns.forEach(b => b.style.pointerEvents = 'none');
+
+            if (idx === correctIdx) {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('wrong');
+                btns[correctIdx].classList.add('correct');
+            }
+
+            setTimeout(() => {
+                if (currentQ < totalQ) {
+                    currentQuestionEl.classList.remove('active');
+                    currentQ++;
+                    document.querySelectorAll('.question')[currentQ - 1].classList.add('active');
+                    document.getElementById('q-progress').textContent = `Pregunta ${currentQ} de ${totalQ}`;
+                } else {
+                    showResults();
+                }
+            }, 1500);
+        }
+
+        function showResults() {
+            document.getElementById('quiz-content').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

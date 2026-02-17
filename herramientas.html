@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Herramientas y Simuladores</title>
-    <meta name="description" content="Herramientas de cálculo y simulación para instructores SENA.">
-    <meta name="keywords" content="SENA, Herramientas, Simulador, Calculadora EP">
+    <title>SENA Portal Elite - Utilidades Docentes</title>
+    <meta name="description"
+        content="Simuladores automatizados para el cálculo de plazos de la Guía 040 y carga horaria docente.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
@@ -17,96 +17,35 @@
 
 <body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">SENA <span>PORTAL</span></a>
+        <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
         <ul class="navbar-nav">
-            <li><a href="index.html" class="navbar-link">Inicio</a></li>
-            <li><a href="momentos.html" class="navbar-link">Momentos</a></li>
-            <li><a href="roles.html" class="navbar-link">Roles</a></li>
+            <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
+            <li><a href="quiz.html" class="navbar-link">Quiz</a></li>
             <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
-            <li><a href="formatos.html" class="navbar-link">Formatos</a></li>
-            <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
+            <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
+            <li><a href="herramientas.html" class="navbar-link active">Herramientas</a></li>
         </ul>
     </nav>
 
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">UTILIDADES DOCENTES</div>
-                <h1>Herramientas y Simuladores</h1>
-                <p>Potencie su labor pedagógica con herramientas diseñadas para automatizar cálculos de fechas, horas y
-                    seguimiento normativo.</p>
+                <div class="hero-meta">PRECISIÓN NORMATIVA</div>
+                <h1>Utilidades de Gestión</h1>
+                <p>Simuladores automatizados para el cálculo de plazos de la Guía 040 y carga horaria docente.</p>
             </div>
         </header>
 
-        <!-- Simulator -->
-        <section class="calculator">
-            <h3><i class="fas fa-calendar-check"></i> Planificador de Momentos EP</h3>
-            <p style="margin-bottom: 2rem; color: var(--text-muted);">Ingrese la fecha estimada de finalización de la
-                etapa lectiva para calcular los plazos normativos según la Guía 040.</p>
-
-            <div class="calc-input">
-                <label>Fecha Fin Etapa Lectiva:</label>
-                <input type="date" id="fechaLectiva" onchange="simularFechas()">
-            </div>
-
-            <div id="simuladorResultados" style="display:none; margin-top: 2.5rem;">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Momento</th>
-                                <th>Hito / Actividad</th>
-                                <th>Fecha Sugerida</th>
-                                <th>Base Normativa</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaSimulador">
-                            <!-- JS populated -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- Calculator -->
-        <section class="calculator">
-            <h3><i class="fas fa-calculator"></i> Calculadora de Carga Horaria EP</h3>
-            <div class="two-col">
-                <div class="calc-input">
-                    <label>Tipo de Contratación:</label>
-                    <select id="tipoCalculo" onchange="calcularHoras()">
-                        <option value="completo">Instructor Planta (10% Seguimiento)</option>
-                        <option value="parcial">Instructor Contratista (Seguimiento específico)</option>
-                    </select>
-                </div>
-                <div class="calc-result">
-                    <div class="number" id="horasMes">128</div>
-                    <div class="label">Horas / Mes para Seguimiento</div>
-                    <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">Capacidad estimada:
-                        <strong id="numAprendices">64</strong> aprendices.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Checklist -->
-        <section class="card">
-            <h3><i class="fas fa-check-double"></i> Checklist de Verificación Integral</h3>
-            <p style="margin-bottom: 2rem; color: var(--text-muted);">Siga este flujo para asegurar el cumplimiento
-                total de los requisitos de certificación.</p>
-
-            <ul class="checklist">
-                <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar que el aprendiz aprobó el 100%
-                    de la etapa lectiva</li>
-                <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Confirmar existencia de los 3 formatos
-                    F023 firmados</li>
-                <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar registro de bitácoras mensuales
-                    (F147)</li>
-                <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Comprobar afiliación a ARL y EPS durante
-                    toda la EP</li>
-                <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Obtener certificación laboral/práctica con
-                    fechas precisas</li>
-            </ul>
+        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Confirmar existencia de los 3 formatos
+            F023 firmados</li>
+        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar registro de bitácoras mensuales
+            (F147)</li>
+        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Comprobar afiliación a ARL y EPS durante
+            toda la EP</li>
+        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Obtener certificación laboral/práctica con
+            fechas precisas</li>
+        </ul>
         </section>
 
         <footer class="footer">

@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Inicio</title>
+    <title>SENA Portal Elite - Dashboard de Instrucción</title>
     <meta name="description"
         content="Portal integral para instructores SENA. Gestión de Etapa Productiva, normativa y herramientas.">
     <meta name="keywords" content="SENA, Instructor, Etapa Productiva, Guía 040, Aprendiz">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
@@ -18,13 +18,13 @@
 
 <body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">SENA <span>PORTAL</span></a>
+        <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
         <ul class="navbar-nav">
-            <li><a href="index.html" class="navbar-link">Inicio</a></li>
-            <li><a href="momentos.html" class="navbar-link">Momentos</a></li>
+            <li><a href="index.html" class="navbar-link active">Dashboard</a></li>
+            <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
             <li><a href="roles.html" class="navbar-link">Roles</a></li>
             <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
-            <li><a href="formatos.html" class="navbar-link">Formatos</a></li>
+            <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
         </ul>
     </nav>
@@ -32,117 +32,85 @@
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">GUÍA GFPI-G-040 | ACUERDO 009 DE 2024</div>
-                <h1>Gestión de Instrucción E.P.</h1>
-                <p>Optimice el seguimiento y control de sus aprendices con herramientas de vanguardia, acceso directo a
-                    normativa y gestión automatizada de plazos legales.</p>
-                <div class="hero-actions">
-                    <a href="momentos.html" class="btn-portal btn-fill">Iniciar Plan de Trabajo</a>
-                    <a href="#normativa" class="btn-portal btn-outline">Actualización Legal</a>
+                <div class="hero-meta">Entorno Profesional de Instrucción</div>
+                <h1>Gestión Estratégica EP</h1>
+                <p>Bienvenido al Centro de Control del Instructor. Aquí encontrará la lógica segmentada para el
+                    cumplimiento normativo de la Guía GFPI-G-040 y el Acuerdo 009 de 2024.</p>
+                <div class="hero-actions" style="margin-top:2rem; display:flex; gap:1rem;">
+                    <a href="momentos.html" class="btn-back-to-top"
+                        style="display:flex; position:static; width:auto; height:auto; padding:0.8rem 1.5rem; background:var(--sena-verde); color:white; border-radius:10px; text-decoration:none; font-weight:700;">Iniciar
+                        Seguimiento</a>
                 </div>
             </div>
 
             <div class="bookings-card">
-                <h2>Agenda MS Bookings</h2>
-                <p>Centralice sus visitas de seguimiento permitiendo que los aprendices elijan sus horarios.</p>
-                <div class="qr-placeholder">
-                    <i class="fas fa-qrcode"></i>
-                    <div class="qr-text">
-                        <strong>QR Dinámico:</strong>
-                        Los aprendices pueden agendar su visita escaneando este código.
-                    </div>
-                </div>
+                <h3 style="margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:0.5rem;">
+                    Sincronización MS Bookings</h3>
+                <p style="font-size:0.85rem; margin-bottom:1.5rem;">Optimice su agenda de visitas técnicas permitiendo
+                    el agendamiento autónomo de sus aprendices.</p>
                 <a href="https://outlook.office.com/book/ReservasEtapaProductivaCSF@sena.edu.co/" target="_blank"
-                    rel="noopener" class="btn-white">Gestionar
-                    Calendario</a>
+                    rel="noopener"
+                    style="display:block; text-align:center; padding:0.8rem; background:white; color:var(--sena-azul-navy); border-radius:8px; text-decoration:none; font-weight:800; transition:0.3s;"
+                    onmouseover="this.style.background='var(--sena-verde)'; this.style.color='white'"
+                    onmouseout="this.style.background='white'; this.style.color='var(--sena-azul-navy)'">Gestionar
+                    Agenda</a>
             </div>
         </header>
 
         <section class="dashboard-grid">
-            <h3>Responsabilidades del Instructor</h3>
+            <h2 style="font-size:1.5rem; margin-bottom:2rem; display:flex; align-items:center; gap:0.5rem;"><i
+                    class="fas fa-chart-line" style="color:var(--sena-verde)"></i> Panel de Control Docente</h2>
             <div class="elite-cards">
                 <div class="elite-card green">
-                    <i class="fas fa-user-check"></i>
-                    <h4>Seguimiento Riguroso</h4>
-                    <p>Realizar 3 visitas obligatorias (Concertación, Parcial, Final) y registrar en F023.</p>
+                    <i class="fas fa-layer-group"></i>
+                    <h4>Procesos Paso a Paso</h4>
+                    <p>Guía segmentada de los 6 momentos de instrucción para un seguimiento impecable.</p>
+                    <a href="momentos.html"
+                        style="color:var(--sena-verde); font-weight:700; text-decoration:none; display:inline-block; margin-top:1rem;">Ver
+                        Flujo <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="elite-card orange">
-                    <i class="fas fa-clock"></i>
-                    <h4>Plazos de Respuesta</h4>
-                    <p>5 días hábiles para retroalimentar bitácoras y 8 días para juicio evaluativo.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Verificación Normativa</h4>
+                    <p>Acceso directo a la Guía 040 y plazos legales para evitar hallazgos administrativos.</p>
+                    <a href="roles.html"
+                        style="color:var(--accent-amber); font-weight:700; text-decoration:none; display:inline-block; margin-top:1rem;">Revisar
+                        Normas <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="elite-card blue">
-                    <i class="fas fa-folder-open"></i>
-                    <h4>Custodia Documental</h4>
-                    <p>Garantizar la integridad de evidencias en SharePoint/Matriz Global.</p>
+                    <div class="number">3</div>
+                    <div class="label">Formatos Principales</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-gavel"></i> Marco Normativo Principal</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Norma</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Acuerdo 009 de 2024</strong></td>
+                                <td>Reglamento del Aprendiz SENA</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guía GFPI-G-040</strong></td>
+                                <td>Guía para el Desarrollo de la EP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Resolución 642 de 2004</strong></td>
+                                <td>Jornada laboral del instructor</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
-
-        <div class="container" id="normativa">
-            <section class="section active">
-                <div class="card">
-                    <h2><i class="fas fa-info-circle"></i> Bienvenido al Manual del Instructor</h2>
-                    <p>Este manual es una herramienta integral diseñada para orientar a los instructores del SENA en la
-                        gestión completa de la <strong>Etapa Productiva</strong> de los aprendices.</p>
-
-                    <div class="info-box info">
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <strong>¿Qué es la Etapa Productiva?</strong>
-                            <p>Según el <strong>Acuerdo 009 de 2024</strong>, es el momento donde el aprendiz aplica,
-                                fortalece y consolida sus competencias en contextos reales.</p>
-                        </div>
-                    </div>
-
-                    <h3>Importancia de la EP</h3>
-                    <p>Representa el puente entre la formación teórica y el mundo laboral real. Durante esta etapa el
-                        aprendiz aumenta sus posibilidades de inserción laboral.</p>
-                </div>
-
-                <div class="counter-box">
-                    <div class="counter-item">
-                        <div class="number">6</div>
-                        <div class="label">Momentos del Proceso</div>
-                    </div>
-                    <div class="counter-item">
-                        <div class="number">7</div>
-                        <div class="label">Alternativas de EP</div>
-                    </div>
-                    <div class="counter-item">
-                        <div class="number">3</div>
-                        <div class="label">Formatos Principales</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2><i class="fas fa-gavel"></i> Marco Normativo Principal</h2>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Norma</th>
-                                    <th>Descripción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Acuerdo 009 de 2024</strong></td>
-                                    <td>Reglamento del Aprendiz SENA</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Guía GFPI-G-040</strong></td>
-                                    <td>Guía para el Desarrollo de la EP</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Resolución 642 de 2004</strong></td>
-                                    <td>Jornada laboral del instructor</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
         </div>
 
         <footer class="footer">
