@@ -203,7 +203,8 @@
     <header class="header-elite"
         style="padding: 3rem 2rem; background: var(--sena-azul-navy); color: white; text-align: center;">
         <h1 style="font-family:'Montserrat'; font-size:3rem; margin-bottom:1rem;">Manual Técnico del Instructor</h1>
-        <p style="opacity:0.8; font-size:1.1rem;">Protocolos de Supervisión y Auditoría Pedagógica v4.0</p>
+        <p style="opacity:0.8; font-size:1.1rem;">Protocolos de Supervisión y Auditoría Pedagógica v5.0 (Ultra
+            Operational)</p>
     </header>
 
     <nav class="nav-container">
@@ -251,19 +252,49 @@
         <section id="normativa" class="section-content">
             <div class="elite-card">
                 <h2><i class="fas fa-gavel"></i> Fundamentación Normativa</h2>
-                <p>Como instructor, su rol trasciende la enseñanza; usted es un <b>auditor de calidad</b>. Su fundamento
-                    se basa en:</p>
-                <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem;">
-                    <div style="background:var(--bg-global); padding:2rem; border-radius:15px;">
-                        <h4 style="color:var(--sena-azul-navy); margin-bottom:1rem;">Guía GFPI-G-040</h4>
-                        <p style="font-size:0.9rem;">Procedimiento operativo para la ejecución de la Formación
-                            Profesional Integral. Define los momentos de visita y formatos obligatorios.</p>
+                <div class="info-box info"
+                    style="background:#e3f2fd; padding:1.5rem; border-left:4px solid #1976d2; border-radius:10px; margin-bottom:2rem;">
+                    <strong><i class="fas fa-balance-scale"></i> Visión Docente:</strong> Sus juicios evaluativos deben
+                    estar blindados legalmente. Un "No Aprobado" sin el soporte de bitácoras vencidas o actas de
+                    inasistencia puede ser revocado por el centro.
+                </div>
+
+                <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                    <div
+                        style="background:var(--bg-global); padding:2rem; border-radius:15px; border:1px solid var(--border-soft);">
+                        <h4 style="color:var(--sena-azul-navy); margin-bottom:1rem;"><i class="fas fa-book"></i> Guía
+                            GFPI-G-040</h4>
+                        <ul style="font-size:0.85rem; padding-left:1.5rem; line-height:2;">
+                            <li>Define los 3 formatos obligatorios (F165, F023, F147).</li>
+                            <li>Establece la periodicidad de las visitas (Inicio, Mitad, Cierre).</li>
+                            <li>Obliga a la valoración técnica y actitudinal simultánea.</li>
+                        </ul>
                     </div>
-                    <div style="background:var(--bg-global); padding:2rem; border-radius:15px;">
-                        <h4 style="color:var(--sena-azul-navy); margin-bottom:1rem;">Acuerdo 009 de 2024</h4>
-                        <p style="font-size:0.9rem;">Nuevo Reglamento del Aprendiz. Define derechos, deberes y el
-                            proceso de cancelación/deserción en Etapa Productiva.</p>
+                    <div
+                        style="background:var(--bg-global); padding:2rem; border-radius:15px; border:1px solid var(--border-soft);">
+                        <h4 style="color:var(--sena-azul-navy); margin-bottom:1rem;"><i class="fas fa-scroll"></i>
+                            Acuerdo 009 de 2024</h4>
+                        <ul style="font-size:0.85rem; padding-left:1.5rem; line-height:2;">
+                            <li><strong>Art. 22:</strong> Causales de sanción en EP.</li>
+                            <li><strong>Art. 25:</strong> Proceso de deserción (3 días inasistencia).</li>
+                            <li><strong>Art. 30:</strong> El aprendiz debe mantener ARL vigente o se suspende la EP.
+                            </li>
+                        </ul>
                     </div>
+                </div>
+
+                <div class="checklist-box"
+                    style="background: var(--sena-azul-navy); color: white; padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+                    <h4 style="color: var(--sena-verde); margin-bottom: 1rem;"><i class="fas fa-check-double"></i> Check
+                        para el Instructor: Blindaje Legal</h4>
+                    <div class="audit-item" onclick="toggleCheck(this)"
+                        style="background:rgba(255,255,255,0.05); margin-bottom:0.5rem;"><i class="far fa-square"></i>
+                        El aprendiz tiene contrato/acta firmado por ambas partes.</div>
+                    <div class="audit-item" onclick="toggleCheck(this)"
+                        style="background:rgba(255,255,255,0.05); margin-bottom:0.5rem;"><i class="far fa-square"></i>
+                        El jefe inmediato conoce sus obligaciones de evaluación.</div>
+                    <div class="audit-item" onclick="toggleCheck(this)" style="background:rgba(255,255,255,0.05);"><i
+                            class="far fa-square"></i> Existe evidencia de la inducción a Etapa Productiva.</div>
                 </div>
             </div>
         </section>
@@ -272,24 +303,38 @@
         <section id="alternativas" class="section-content">
             <div class="elite-card">
                 <h2><i class="fas fa-project-diagram"></i> Gestión de Alternativas</h2>
-                <p>El instructor debe verificar la validez técnica de cada alternativa elegida por el aprendiz.</p>
+                <div class="alert-tips"
+                    style="background:#fff3e0; border-left:5px solid #ff9800; padding:1.5rem; margin-bottom:2rem; border-radius:8px;">
+                    <strong><i class="fas fa-exclamation-circle"></i> Tip Crítico:</strong> En Contrato de Aprendizaje,
+                    el SENA no es empleador. Si hay problemas de acoso o incumplimiento laboral, active de inmediato el
+                    protocolo con la oficina de relaciones corporativas.
+                </div>
+
                 <div class="accordion-elite">
                     <div class="audit-item" onclick="toggleAccordion('alt-contrato')">
-                        <i class="fas fa-file-contract"></i> <span>Contrato de Aprendizaje (Gestión SGVA)</span>
+                        <i class="fas fa-file-contract"></i> <span>Diligencia Debida: Contrato de Aprendizaje</span>
                     </div>
                     <div id="alt-contrato"
-                        style="display:none; padding:1.5rem; border-left:2px solid var(--sena-verde);">
-                        <p>El instructor verifica que las tareas concertadas en el <b>F023</b> coincidan con el programa
-                            de formación. Si hay discrepancia, se debe notificar a la empresa.</p>
+                        style="display:none; padding:1.5rem; border-left:2px solid var(--sena-verde); background:#f9f9f9;">
+                        <h5>Guía de Auditoría:</h5>
+                        <ul style="font-size:0.9rem; line-height:1.8;">
+                            <li>Verificar que las tareas registradas en F023 no sean únicamente administrativas si el
+                                programa es técnico.</li>
+                            <li>Comprobar afiliación a EPS y ARL mediante la planilla de la empresa.</li>
+                        </ul>
                     </div>
 
                     <div class="audit-item" onclick="toggleAccordion('alt-proyecto')">
-                        <i class="fas fa-lightbulb"></i> <span>Proyecto Productivo / Pasantía</span>
+                        <i class="fas fa-lightbulb"></i> <span>Paso a Paso: Proyecto Productivo</span>
                     </div>
                     <div id="alt-proyecto"
-                        style="display:none; padding:1.5rem; border-left:2px solid var(--sena-verde);">
-                        <p>Exige la aprobación previa de un plan de trabajo. El instructor actúa como tutor técnico y
-                            evaluador de resultados.</p>
+                        style="display:none; padding:1.5rem; border-left:2px solid var(--sena-verde); background:#f9f9f9;">
+                        <h5>Procedimiento Docente:</h5>
+                        <ol style="font-size:0.9rem; line-height:1.8; padding-left:1.5rem;">
+                            <li>Revisión del Plan de Negocio o Proyecto Técnico.</li>
+                            <li>Aprobación por parte de la subdirección / coordinación.</li>
+                            <li>Seguimiento mediante bitácoras de avance de hitos.</li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -298,45 +343,210 @@
         <!-- SECCIÓN MOMENTOS -->
         <section id="momentos" class="section-content">
             <div class="elite-card">
-                <h2><i class="fas fa-clock"></i> Línea de Tiempo de Supervisión</h2>
+                <h2><i class="fas fa-clock"></i> Protocolos de Operación: Los 6 Momentos</h2>
                 <div class="timeline">
-                    <!-- Fase 1 -->
                     <div class="timeline-item">
-                        <span class="timeline-badge">Fase 01: Inducción</span>
-                        <h3>Alistamiento y Formalización</h3>
-                        <p><b>Acciones del Instructor:</b> Validar el registro de la alternativa y verificar que el
-                            aprendiz no tenga deudas académicas en Etapa Lectiva.</p>
-                        <div class="audit-list">
-                            <div class="audit-item" onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar
-                                F-165 firmado</div>
-                            <div class="audit-item" onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar
-                                juicio "Aprobado" en lectiva</div>
+                        <span class="timeline-badge">M01: Inducción</span>
+                        <h3>Registro y Alistamiento</h3>
+                        <p>El instructor debe verificar que el aprendiz tenga el estado "Condicionado" o "En Tránsito" a
+                            EP en SofiaPlus.</p>
+                        <div class="checklist-box"
+                            style="background:#f8f9fa; border:1px solid #ddd; padding:1.5rem; border-radius:10px;">
+                            <strong>Checklist:</strong>
+                            <ul style="font-size:0.85rem; margin-top:0.5rem;">
+                                <li><i class="fas fa-check-circle" style="color:var(--sena-verde);"></i> Formato F165
+                                    debidamente firmado.</li>
+                                <li><i class="fas fa-check-circle" style="color:var(--sena-verde);"></i> Alternativa
+                                    alineada al diseño curricular.</li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- Fase 2 -->
+
                     <div class="timeline-item">
-                        <span class="timeline-badge">Fase 02: Concertación</span>
-                        <h3>Visita de Concertación (F023 P1)</h3>
-                        <p>Establecer el plan de trabajo con el jefe inmediato. La fecha debe ser dentro de los primeros
-                            15 días del inicio de la EP.</p>
+                        <span class="timeline-badge">M02: Concertación</span>
+                        <h3>Visita 1: Definición de Metas</h3>
+                        <div class="alert-tips"
+                            style="background:#e8f5e9; color:#2e7d32; padding:1rem; border-radius:8px; margin-bottom:1rem;">
+                            <strong>Tip:</strong> Si la empresa no asigna jefe inmediato en el F023, suspenda la
+                            concertación. No puede haber seguimiento sin un interlocutor empresarial.
+                        </div>
+                        <p>Plazo máximo: 15 días hábiles después del inicio.</p>
                     </div>
-                    <!-- ... más fases ... -->
+
+                    <div class="timeline-item" style="border-left: 5px solid #d32f2f;">
+                        <span class="timeline-badge" style="background:#d32f2f;">Protocolo de Crisis</span>
+                        <h3>Reporte de Accidentes (ARL)</h3>
+                        <ol style="font-size:0.9rem; line-height:1.8;">
+                            <li>Asegurar atención médica inmediata al aprendiz.</li>
+                            <li>Verificar que la empresa haya hecho el reporte al FURAT (máximo 48h).</li>
+                            <li>Notificar a la coordinación académica adjuntando el reporte de ARL.</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIONES RESTANTES (STUBS POR AHORA) -->
+        <!-- SECCIÓN SEGUIMIENTO -->
         <section id="seguimiento" class="section-content">
             <div class="elite-card">
                 <h2><i class="fas fa-edit"></i> Auditoría de Bitácoras (F147)</h2>
-                <p>Revisión quincenal/mensual de las evidencias presentadas por el aprendiz.</p>
+                <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                    <div style="background:#f1f8e9; padding:2rem; border-radius:15px;">
+                        <h4 style="color:#388e3c;">Criterios de Aceptación:</h4>
+                        <ul style="font-size:0.85rem; line-height:1.8;">
+                            <li>Uso de <strong>verbos rectores</strong> técnicos (Diseñar, Instalar, Evaluar).</li>
+                            <li>Periodos cronológicos exactos sin solapamiento.</li>
+                            <li>Firma del jefe inmediato con sello (si aplica) o digital verificable.</li>
+                        </ul>
+                    </div>
+                    <div style="background:#fff3e0; padding:2rem; border-radius:15px;">
+                        <h4 style="color:#e65100;">Señales de Alerta (Red Flags):</h4>
+                        <ul style="font-size:0.85rem; line-height:1.8;">
+                            <li>Copiar y pegar la misma descripción en todas las bitácoras.</li>
+                            <li>Firmas que parecen escaneadas o superpuestas.</li>
+                            <li>Actividades que no corresponden al perfil del programa.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DERECHOS/DISCIPLINA -->
+        <section id="derechos" class="section-content">
+            <div class="elite-card" style="border-left-color: #ef4444;">
+                <h2><i class="fas fa-balance-scale-right"></i> Gestión Disciplinaria y Blindaje Docente</h2>
+                <p>El instructor no sanciona, <strong>reporta evidencias</strong>. Su labor es garantizar el debido
+                    proceso para evitar que las sanciones sean revocadas.</p>
+
+                <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:2rem 0;">
+                    <div style="background:#fff5f5; padding:2rem; border-radius:15px; border:1px solid #feb2b2;">
+                        <h4 style="color:#c53030;"><i class="fas fa-exclamation-triangle"></i> Causales de Comité (Art.
+                            22)</h4>
+                        <ul style="font-size:0.85rem; line-height:1.8; margin-top:1rem;">
+                            <li><strong>Plagio en Bitácoras:</strong> Copia fiel de internet o de otro compañero.</li>
+                            <li><strong>Incumplimiento Laboral:</strong> Reporte negativo del jefe inmediato por
+                                inasistencia o mala conducta.</li>
+                            <li><strong>Falta de ARL:</strong> Continuar la EP sin cobertura de riesgos (Falta Grave).
+                            </li>
+                            <li><strong>Insubordinación:</strong> No atender citaciones del instructor o la
+                                coordinación.</li>
+                        </ul>
+                    </div>
+                    <div style="background:#f1f8e9; padding:2rem; border-radius:15px; border:1px solid #c5e1a5;">
+                        <h4 style="color:#33691e;"><i class="fas fa-shield-alt"></i> El "Blindaje" Documental</h4>
+                        <p style="font-size:0.85rem;">Para radicar un informe de deserción, usted debe adjuntar:</p>
+                        <ul style="font-size:0.85rem; line-height:1.8;">
+                            <li>Registro de 3 correos enviados (Día 1, Día 2, Día 3).</li>
+                            <li>Captura de pantalla de registro de llamadas.</li>
+                            <li>Copia del correo enviado al Jefe Inmediato preguntando por el aprendiz.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-guide"
+                    style="background: white; border: 2px solid #ef4444; padding: 2rem; border-radius: 20px;">
+                    <h4 style="color: #ef4444; margin-bottom: 1.5rem;">Flujograma de Deserción Automática</h4>
+                    <div class="timeline-simple" style="padding-left:1.5rem; border-left:3px dashed #ef4444;">
+                        <div style="margin-bottom:1.5rem; position:relative;">
+                            <strong style="color:#ef4444;">HITO 01: Ausencia Detectada</strong><br>
+                            <small>Pasa 24 horas sin reporte de bitácora o contacto.</small>
+                        </div>
+                        <div style="margin-bottom:1.5rem;">
+                            <strong style="color:#ef4444;">HITO 02: Primer Llamado</strong><br>
+                            <small>Envío de correo formal "Solicitud de Justificación".</small>
+                        </div>
+                        <div style="margin-bottom:1.5rem;">
+                            <strong style="color:#ef4444;">HITO 03: Alerta a Empresa</strong><br>
+                            <small>Consulta al jefe inmediato sobre la situación del aprendiz.</small>
+                        </div>
+                        <div>
+                            <strong style="color:#ef4444;">FINAL: Radicación de Informe</strong><br>
+                            <small>Si al día 4 no hay respuesta, radique el informe de novedad en el aplicativo
+                                G-EP.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert-tips"
+                    style="background:#fff8e1; color:#856404; padding:1.5rem; border-radius:12px; margin-top:2rem; border-left:5px solid #ffc107;">
+                    <strong><i class="fas fa-info-circle"></i> Nota de Seguridad:</strong> Nunca emita juicio evaluativo
+                    "No Aprobado" sin antes haber realizado al menos un plan de mejoramiento pedagógico firmado por el
+                    aprendiz.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN VISITAS -->
+        <section id="visitas" class="section-content">
+            <div class="elite-card">
+                <h2><i class="fas fa-shuttle-van"></i> Protocolo de Visita Técnica en Sitio (Manual de Campo)</h2>
+                <p>La visita técnica es el pilar de la formación dual. No es una charla informal; es una **auditoría
+                    pedagógica de desempeño**.</p>
+
+                <div class="row" style="display:grid; grid-template-columns: 1.5fr 1fr; gap:2rem; margin:2rem 0;">
+                    <div
+                        style="background:white; border:1px solid var(--border-soft); padding:2rem; border-radius:20px;">
+                        <h4 style="color:var(--sena-verde);"><i class="fas fa-clipboard-list"></i> Guía de Entrevista al
+                            Jefe Inmediato</h4>
+                        <p style="font-size:0.85rem; margin-bottom:1rem;">Realice estas 3 preguntas clave para evaluar
+                            el "Ser":</p>
+                        <ol style="font-size:0.9rem; line-height:1.8;">
+                            <li>¿El aprendiz demuestra proactividad y autonomía en las tareas asignadas?</li>
+                            <li>¿Cómo califica el cumplimiento de horarios y el respeto por las normas de la empresa?
+                            </li>
+                            <li>¿Qué competencias técnicas (Saber Hacer) cree que el aprendiz debe fortalecer?</li>
+                        </ol>
+                    </div>
+                    <div style="background:#e8f5e9; padding:2rem; border-radius:20px;">
+                        <h4 style="color:#2e7d32;"><i class="fas fa-hard-hat"></i> Auditoría SST (Seguridad)</h4>
+                        <ul style="font-size:0.85rem; line-height:1.8; list-style:none; padding:0;">
+                            <li><i class="fas fa-check-square"></i> Verificación de herramientas ergonómicas.</li>
+                            <li><i class="fas fa-check-square"></i> Uso de EPP según el riesgo del área.</li>
+                            <li><i class="fas fa-check-square"></i> Afiliación ARL vigente (Planilla del mes).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="checklist-box"
+                    style="background: var(--sena-azul-navy); color: white; padding: 2.5rem; border-radius: 20px;">
+                    <h4 style="color: var(--sena-verde); margin-bottom: 1.5rem;"><i class="fas fa-tasks"></i> Protocolo
+                        de Ejecución de Visita</h4>
+                    <div class="audit-item" onclick="toggleCheck(this)"
+                        style="background:rgba(255,255,255,0.05); margin-bottom:0.7rem;">
+                        <i class="far fa-square"></i> <strong>Paso 1:</strong> Presentación institucional con carnet
+                        vigente ante la empresa.
+                    </div>
+                    <div class="audit-item" onclick="toggleCheck(this)"
+                        style="background:rgba(255,255,255,0.05); margin-bottom:0.7rem;">
+                        <i class="far fa-square"></i> <strong>Paso 2:</strong> Recorrido por el puesto de trabajo y
+                        verificación de bitácoras físicas.
+                    </div>
+                    <div class="audit-item" onclick="toggleCheck(this)"
+                        style="background:rgba(255,255,255,0.05); margin-bottom:0.7rem;">
+                        <i class="far fa-square"></i> <strong>Paso 3:</strong> Diligenciamiento conjunto del F023 (Firma
+                        instructor, jefe y aprendiz).
+                    </div>
+                    <div class="audit-item" onclick="toggleCheck(this)" style="background:rgba(255,255,255,0.05);">
+                        <i class="far fa-square"></i> <strong>Paso 4:</strong> Registro fotográfico (Instructor +
+                        Aprendiz + Entorno Laboral).
+                    </div>
+                </div>
+
+                <div class="info-box"
+                    style="margin-top:2rem; background:#fff3e0; border-left:4px solid #f57c00; padding:1.5rem; border-radius:12px;">
+                    <h5 style="color:#e65100; margin-bottom:0.5rem;"><i class="fas fa-cloud-upload-alt"></i> Registro en
+                        SofiaPlus</h5>
+                    <p style="font-size:0.85rem;">Recuerde que tiene máximo <strong>48 horas</strong> post-visita para
+                        cargar el acta firmada al aplicativo. El retraso en la carga afecta los indicadores de gestión
+                        del centro.</p>
+                </div>
             </div>
         </section>
 
     </main>
 
     <footer class="footer">
-        <p>© 2025 - Portal Elite del Instructor SENA | Guía Master v4.0</p>
+        <p>© 2025 - Portal Elite del Instructor SENA | Guía Master v5.0</p>
     </footer>
 
     <script>
@@ -346,7 +556,12 @@
             document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
 
             // Show current
-            document.getElementById(sectionId).classList.add('active');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                // Update URL hash without jumping
+                history.pushState(null, null, '#' + sectionId);
+            }
 
             // Activate button
             const activeBtn = Array.from(document.querySelectorAll('.nav-tab-btn')).find(b => b.getAttribute('onclick').includes(`'${sectionId}'`));
@@ -355,7 +570,7 @@
             // Scroll to top
             window.scrollTo(0, 0);
 
-            // Update progress bar dummy logic
+            // Update progress bar
             const progress = {
                 'inicio': 10,
                 'normativa': 25,
@@ -366,8 +581,16 @@
                 'visitas': 100
             };
             const bar = document.getElementById('master-progress');
-            if (bar) bar.style.width = progress[sectionId] + '%';
+            if (bar) bar.style.width = (progress[sectionId] || 10) + '%';
         }
+
+        // Deep Linking Support
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
+        });
 
         function toggleAccordion(id) {
             const el = document.getElementById(id);

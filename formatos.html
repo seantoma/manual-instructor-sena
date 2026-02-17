@@ -145,93 +145,151 @@
     </nav>
 
     <header class="header-elite"
-        style="padding: 3rem 2rem; background: var(--sena-azul-navy); color: white; text-align: center;">
-        <h1 style="font-family:'Montserrat'; font-size:2.8rem; margin-bottom:1rem;">Repositorio Documental</h1>
-        <p style="opacity:0.8; font-size:1.1rem;">Kit de Auditoría y Formatos Oficiales GFPI</p>
+        style="padding: 4rem 2rem; background: var(--sena-azul-navy); color: white; text-align: center;">
+        <h1 style="font-family:'Montserrat'; font-size:3rem; margin-bottom:1rem;">Zona de Auditoría Ninja</h1>
+        <p style="opacity:0.9; font-size:1.2rem; font-weight: 300;">Kit de Supervivencia Documental v5.0 (Ultra
+            Operational) - Cero Hallazgos</p>
+        <div class="header-badges" style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem;">
+            <span
+                style="background: var(--sena-verde); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;"><i
+                    class="fas fa-shield-alt"></i> GFPI CERTIFIED</span>
+            <span
+                style="background: var(--accent-amber); color: var(--sena-azul-navy); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;"><i
+                    class="fas fa-user-ninja"></i> NIVEL MASTER</span>
+        </div>
     </header>
 
     <div class="repo-container">
 
         <!-- Formato F-023 -->
-        <div class="guide-card">
+        <div class="guide-card" style="border-left-color: var(--accent-indigo);">
             <div class="guide-header" onclick="toggleGuide(this)">
-                <span><i class="fas fa-file-excel"></i> Formato GFPI-F-023 (Planeación y Seguimiento)</span>
+                <span><i class="fas fa-file-excel"></i> Formato GFPI-F-023: El Mapa del Tesoro</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="guide-body show">
-                <p>Este es el documento maestro de la Etapa Productiva. Como instructor, usted debe asegurar la firma
-                    oportuna en sus 3 partes constitutivas.</p>
+                <div class="ninja-tip"
+                    style="background: rgba(99, 102, 241, 0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; border-right: 4px solid var(--accent-indigo);">
+                    <h5 style="color: var(--accent-indigo); margin-bottom: 0.5rem;"><i class="fas fa-mask"></i> Tips de
+                        Ninja Docente:</h5>
+                    <p style="font-size: 0.9rem; margin: 0;"><strong>No firme en blanco:</strong> Asegure que el
+                        aprendiz llene el campo de 'Empresa' y 'Nit' antes de su firma. Un error aquí invalida la
+                        auditoría de certificación.</p>
+                </div>
+
                 <div class="tabs-elite">
-                    <button class="tab-btn active" onclick="openTab(event, 'f023-docente')">Criterios de
-                        Auditoría</button>
+                    <button class="tab-btn active" onclick="openTab(event, 'f023-docente')">Auditoría Ninja</button>
+                    <button class="tab-btn" onclick="openTab(event, 'f023-horrores')">Galería de Horrores</button>
                     <button class="tab-btn" onclick="openTab(event, 'f023-descarga')">Descargas</button>
                 </div>
 
                 <div id="f023-docente" class="tab-content active">
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Verifique estos puntos críticos para evitar
+                        devoluciones del Centro de Formación:</p>
                     <table>
                         <thead>
                             <tr>
-                                <th>Parte</th>
-                                <th>Requisito Docente</th>
-                                <th>Plazo Legal</th>
+                                <th>Nodo Crítico</th>
+                                <th>El Ninja Verifica...</th>
+                                <th>Error Fatal</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Concertación</td>
-                                <td>Verificar pertinencia técnica de actividades.</td>
-                                <td>Mes 01 (Primeras 2 semanas)</td>
+                                <td>Resultados de Aprendizaje</td>
+                                <td>Que los códigos coincidan con el diseño curricular.</td>
+                                <td>RA de otro programa.</td>
                             </tr>
                             <tr>
-                                <td>Seguimiento</td>
-                                <td>Evaluar progreso y factores actitudinales.</td>
-                                <td>Mes 03-04 (Intermedio)</td>
+                                <td>Firmas y Sellos</td>
+                                <td>Firma original o digital con certificado.</td>
+                                <td>Firma pegada como imagen (PNG).</td>
                             </tr>
                             <tr>
-                                <td>Evaluación</td>
-                                <td>Cierre y determinación de juicio final.</td>
-                                <td>Mes 06 / 09 (Cierre)</td>
+                                <td>Fechas de Visita</td>
+                                <td>Que sean hábiles y dentro del rango de EP.</td>
+                                <td>Visita en festivos o domingo.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <div id="f023-horrores" class="tab-content">
+                    <div style="background: #fff5f5; border-radius: 12px; padding: 1.5rem; border: 1px solid #feb2b2;">
+                        <h5 style="color: #c53030; margin-bottom: 1rem;"><i class="fas fa-skull-crossbones"></i> Evite
+                            estos errores comunes:</h5>
+                        <ul style="font-size: 0.85rem; padding-left: 1.5rem; color: #742a2a; line-height: 1.8;">
+                            <li><strong>El Fotomontaje:</strong> Copiar la firma del jefe de un PDF a otro. El linter de
+                                auditoría lo detecta por la resolución de píxeles.</li>
+                            <li><strong>El Desajuste:</strong> Actividades de "Secretariado" en un aprendiz de
+                                "Mantenimiento Electrónico".</li>
+                            <li><strong>La Incongruencia:</strong> Fecha de firma posterior a la fecha de radicación en
+                                SofiaPlus.</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div id="f023-descarga" class="tab-content">
                     <div style="background:var(--bg-global); padding:2rem; border-radius:15px; text-align:center;">
-                        <select id="f023-select" style="margin-bottom:1rem; padding:0.5rem; border-radius:8px;">
-                            <option value="Formatos/Visita 1 GFPI-F023.xlsx">Versión Concertación</option>
-                            <option value="Formatos/Visita 2 GFPI-F023.xlsx">Versión Seguimiento</option>
-                            <option value="Formatos/Visita 3 GFPI-F023.xlsx">Versión Evaluación Final</option>
+                        <select id="f023-select"
+                            style="margin-bottom:1rem; padding:0.5rem; border-radius:8px; border: 1px solid #ddd;">
+                            <option value="Formatos/Visita 1 GFPI-F023.xlsx">Versión Concertación (P1)</option>
+                            <option value="Formatos/Visita 2 GFPI-F023.xlsx">Versión Seguimiento (P2)</option>
+                            <option value="Formatos/Visita 3 GFPI-F023.xlsx">Versión Evaluación Final (P3)</option>
                         </select><br>
                         <a href="#" class="btn-download" onclick="downloadFile('f023-select')"><i
-                                class="fas fa-download"></i> Descargar Formato</a>
+                                class="fas fa-download"></i> Descargar Kit Oficial</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Formato F-147 -->
-        <div class="guide-card">
+        <div class="guide-card" style="border-left-color: var(--sena-verde);">
             <div class="guide-header" onclick="toggleGuide(this)">
-                <span><i class="fas fa-book"></i> Formato GFPI-F-147 (Bitácoras)</span>
+                <span><i class="fas fa-book"></i> Formato GFPI-F-147: Diario del Mentor</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="guide-body">
-                <p>Evidencia periódica del desempeño del aprendiz. Su revisión debe ser rigurosa y técnica.</p>
+                <div class="ninja-tip"
+                    style="background: rgba(57, 169, 0, 0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; border-right: 4px solid var(--sena-verde);">
+                    <h5 style="color: var(--sena-verde); margin-bottom: 0.5rem;"><i class="fas fa-user-ninja"></i>
+                        Control de Calidad Docente:</h5>
+                    <p style="font-size: 0.9rem; margin: 0;"><strong>Vigilancia de RAPS:</strong> Asegure que el
+                        aprendiz mencione explícitamente el Resultado de Aprendizaje que está aplicando en sus tareas
+                        semanales. No acepte "Hice lo mismo de ayer".</p>
+                </div>
+
                 <div class="tabs-elite">
-                    <button class="tab-btn active" onclick="openTab(event, 'f147-check')">Lista de Chequeo</button>
+                    <button class="tab-btn active" onclick="openTab(event, 'f147-check')">Lista Ninja</button>
+                    <button class="tab-btn" onclick="openTab(event, 'f147-critico')">Protocolos de Crisis</button>
                     <button class="tab-btn" onclick="openTab(event, 'f147-file')">Descarga</button>
                 </div>
+
                 <div id="f147-check" class="tab-content active">
-                    <ul style="padding-left:1.5rem; color:var(--text-muted); line-height:2;">
-                        <li>Verificar que las fechas correspondan al periodo quincenal/mensual.</li>
-                        <li>Validar la firma del jefe inmediato (obligatoria para validez).</li>
-                        <li>Retroalimentar actividades que no sean técnicas o estén mal descritas.</li>
+                    <ul class="audit-list">
+                        <li class="audit-item" onclick="toggleCheck(this)"><i class="far fa-square"></i> Verbos en
+                            infinitivo y contenido técnico.</li>
+                        <li class="audit-item" onclick="toggleCheck(this)"><i class="far fa-square"></i> Firma del jefe
+                            inmediato con cargo y contacto.</li>
+                        <li class="audit-item" onclick="toggleCheck(this)"><i class="far fa-square"></i> Descripción de
+                            la evidencia (fotos, reportes, etc).</li>
                     </ul>
                 </div>
+
+                <div id="f147-critico" class="tab-content">
+                    <div style="background: #fff8e1; border-radius: 12px; padding: 1.5rem; border: 1px solid #ffe082;">
+                        <h5 style="color: #f57c00; margin-bottom: 1rem;"><i class="fas fa-exclamation-triangle"></i>
+                            ¿Qué hacer si hay retraso?</h5>
+                        <p style="font-size: 0.85rem; color: #5d4037;">Si el aprendiz no entrega bitácoras en 30 días,
+                            se configura causal de deserción administrativa. El instructor no debe "esperarlo", debe
+                            radicar el informe de novedad para proteger su propia auditoría.</p>
+                    </div>
+                </div>
+
                 <div id="f147-file" class="tab-content" style="text-align:center; padding:1rem;">
                     <a href="Formatos/BITACORAS GFPI-F-147V4.xlsx" class="btn-download" download><i
-                            class="fas fa-file-excel"></i> Descargar Bitácora F-147</a>
+                            class="fas fa-file-excel"></i> Descargar Bitácora Master</a>
                 </div>
             </div>
         </div>
@@ -239,14 +297,14 @@
     </div>
 
     <footer class="footer">
-        <p>© 2025 - Portal Elite del Instructor SENA | Repositorio v4.0</p>
+        <p>© 2025 - Portal Elite del Instructor SENA | Repositorio v5.0</p>
     </footer>
 
     <!-- AI AGENT -->
     <div id="ai-fab"><i class="fas fa-robot"></i></div>
     <div id="chat-window" class="chat-window">
         <div class="chat-header">
-            <span><b>SENA_INST_BOT v3.5</b></span>
+            <span><b>SENA_INST_BOT v5.0</b></span>
             <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
                     class="fas fa-times"></i></button>
         </div>
