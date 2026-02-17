@@ -40,10 +40,38 @@ function initInstBot() {
         body.scrollTop = body.scrollHeight;
     };
 
+    // Sugerencias rápidas
+    const suggestions = ['¿Qué es TyT?', 'Los 6 Momentos', 'Acuerdo 009', 'Bitácoras', 'Fuentes Confiables'];
+    const sugContainer = document.createElement('div');
+    sugContainer.style.padding = '0.5rem 1rem';
+    sugContainer.style.display = 'flex';
+    sugContainer.style.gap = '5px';
+    sugContainer.style.flexWrap = 'wrap';
+    sugContainer.style.background = '#fff';
+    sugContainer.style.borderTop = '1px solid #eee';
+
+    suggestions.forEach(s => {
+        const b = document.createElement('button');
+        b.innerText = s;
+        b.style.fontSize = '0.7rem';
+        b.style.padding = '4px 8px';
+        b.style.borderRadius = '15px';
+        b.style.border = '1px solid var(--sena-verde)';
+        b.style.background = 'transparent';
+        b.style.cursor = 'pointer';
+        b.style.color = 'var(--sena-verde)';
+        b.addEventListener('click', () => {
+            input.value = s;
+            send.click();
+        });
+        sugContainer.appendChild(b);
+    });
+    win.insertBefore(sugContainer, document.querySelector('.chat-footer'));
+
     const showTyping = () => {
         const dot = document.createElement('div');
         dot.className = 'msg bot typing';
-        dot.innerHTML = '<i class="fas fa-microchip fa-spin"></i> Procesando motor normativo v3.5...';
+        dot.innerHTML = '<i class="fas fa-microchip fa-spin"></i> Procesando motor normativo v4.0...';
         dot.id = 'typing-indicator';
         body.appendChild(dot);
         body.scrollTop = body.scrollHeight;
@@ -57,32 +85,36 @@ function initInstBot() {
             const indicator = document.getElementById('typing-indicator');
             if (indicator) indicator.remove();
 
-            let r = "Instructor, no reconozco ese término en los niveles locales. <b>¿Desea que realice una búsqueda en la red global del SENA?</b><br><br><a href='https://www.google.com/search?q=SENA+Guia+040+" + encodeURIComponent(query) + "' target='_blank' class='btn-mini' style='background:var(--sena-verde); color:white;'>Buscar en Red SENA</a>";
+            let r = "Instructor, no localizo ese término en mis registros locales de la Guía 040 o Acuerdo 009. <b>¿Desea que consulte en la red global SENA?</b><br><br><div style='display:flex; gap:5px; flex-wrap:wrap;'><a href='https://www.google.com/search?q=SENA+Guia+040+" + encodeURIComponent(query) + "' target='_blank' class='btn-mini' style='background:var(--sena-verde); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Buscar en Google</a> <a href='https://sissenagit-ub43lappzgna58vrvklfj3k.streamlit.app/' target='_blank' class='btn-mini' style='background:var(--sena-azul-navy); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Consultar SEP_SENA</a></div>";
 
             const intents = [
                 {
-                    keys: ['hola', 'bienvenido', 'saludo'],
-                    response: "Buen día, Instructor. Soy <b>SENA_INST_BOT v3.5</b>. Mi base de conocimientos ha sido fortalecida con la teoría íntegra de la <b>Guía 040</b> y el <b>Acuerdo 009 de 2024</b>. ¿Qué proceso técnico o normativo desea desglosar hoy?"
+                    keys: ['hola', 'bienvenido', 'saludo', 'quien eres'],
+                    response: "¡Saludos, Instructor! Soy <b>SENA_INST_BOT v4.0 (Turbo Edition)</b>.<br><br>Mi motor ha sido actualizado con:<br>• <b>Guía 040 (2023):</b> Protocolo de Momentos.<br>• <b>Acuerdo 009 (2024):</b> Nuevo Reglamento.<br>• <b>Decreto 1072:</b> Normativa laboral y ARL.<br><br>¿En qué proceso de auditoría o acompañamiento puedo asistirle hoy?"
                 },
                 {
-                    keys: ['tyt', 'examen', 'prueba', 'presento'],
-                    response: "<b>Marco Normativo de Pruebas TyT:</b><br>Según la normativa institucional y los lineamientos de certificación, la presentación de las <b>Pruebas Saber TyT</b> es un **requisito obligatorio** para el proceso de certificación de los aprendices de nivel Tecnólogo.<br><br><b>¿Qué sucede si un aprendiz no las presenta?</b><br>1. <b>Bloqueo de Certificación:</b> El aprendiz no podrá optar al título hasta que presente la prueba en la siguiente convocatoria oficial del ICFES.<br>2. <b>Incumplimiento Administrativo:</b> El Centro de Formación no podrá registrar el cierre definitivo del programa.<br>3. <b>Excepción:</b> Solo causas de fuerza mayor debidamente documentadas pueden ser consideradas ante el Comité, pero la obligación de presentar la prueba persiste para el grado.<br><br><a href='https://www.icfes.gov.co/examenes-saber-tyt' target='_blank' style='color:var(--sena-verde)'>Ver fechas ICFES</a>"
+                    keys: ['tyt', 'examen', 'saber', 'requisito'],
+                    response: "<b>Asunto: Pruebas Saber TyT</b><br>Basado en la Circular 2024 y Guía de Certificación:<br>1. **Obligatoriedad:** Es requisito indispensable para certificar Tecnólogos.<br>2. **Evidencia:** El aprendiz debe cargar el reporte de presentación (o asistencia) en su carpeta.<br>3. **Fuente Confiable:** <a href='https://www.icfes.gov.co/' target='_blank' style='color:var(--sena-azul-claro)'>Portal Oficial ICFES</a>"
                 },
                 {
                     keys: ['momento', 'paso', 'etapa', 'fase'],
-                    response: "<b>Desglose de los 6 Momentos (Guía 040):</b><br>1. <b>Momento 1 (Preparación):</b> Socialización de la Etapa Productiva antes de terminar la lectiva.<br>2. <b>Momento 2 (Selección):</b> Registro de la alternativa en SofiaPlus.<br>3. <b>Momento 3 (Concertación):</b> Realización de la Visita 1. Definición del Plan de Trabajo (F023) en los primeros 15 días.<br>4. <b>Momento 4 (Seguimiento):</b> Ejecución y revisión de bitácoras (Visita 2 al mes 3).<br>5. <b>Momento 5 (Evaluación):</b> Visita 3 final. Emisión parcial del juicio.<br>6. <b>Momento 6 (Certificación):</b> Verificación documental final y Juicio Evaluativo Aprobado.<br><br><b>¿Desea profundizar en algún momento específico?</b>"
+                    response: "<b>Estructura Técnica (Guía 040):</b><br>Los 6 Momentos son el pilar de la supervisión. Destacan:<br>• **M1 (Inducción):** Validación de RAPs al 100%.<br>• **M3 (Concertación):** Primeros 15 días, firma de F-023.<br>• **M6 (Certificación):** Cierre definitivo.<br><br><i>Fuente: Manual de Procedimiento GFPI.</i>"
                 },
                 {
-                    keys: ['acuerdo 009', 'reglamento', 'sancion', 'comite'],
-                    response: "<b>Teoría del Acuerdo 009 de 2024 (Reglamento):</b><br>Este acuerdo redefine los deberes y prohibiciones. En Etapa Productiva, es fundamental:<br>• **Art. 22:** Obligación de mantener la vinculación vigente y reportar novedades.<br>• **Art. 25:** Trámite de novedades (Traslados, aplazamientos, retiros).<br>• **Inasistencia:** Si el aprendiz falta 3 días consecutivos sin justificar a la empresa, se inicia proceso de **Deserción**.<br>• **Comité de Evaluación:** Procedimiento administrativo para resolver faltas leves, graves o gravísimas detectadas durante la supervisión."
+                    keys: ['acuerdo 009', 'reglamento', 'sancion', 'falta', 'deserción'],
+                    response: "<b>Alerta Normativa - Acuerdo 009 de 2024:</b><br>• **Deserción:** 3 días de inasistencia injustificada en la empresa.<br>• **Etapa Productiva:** El instructor debe reportar novedades en SofiaPlus máximo 5 días después de detectarlas.<br>• **Fuente Legal:** <a href='http://noticias.sena.edu.co/' target='_blank' style='color:var(--sena-azul-claro)'>Repositorio Normativo SENA</a>"
                 },
                 {
-                    keys: ['f023', 'f147', 'bitacora', 'formato'],
-                    response: "<b>Protocolo Técnico de Formatos:</b><br>1. <b>GFPI-F-023:</b> Es el instrumento de Planeación, Seguimiento y Evaluación. Se diligencia en 3 etapas. Verifique que las firmas coincidan con los representantes legales o jefes delegados.<br>2. <b>GFPI-F-147 (Bitácora):</b> Registro descriptivo de actividades. <br>• **Teoría:** Debe demostrar la aplicación de las competencias del perfil de salida.<br>• **Procedimiento:** El aprendiz entrega cada quincena, el instructor retroalimenta en máximo 5 días hábiles."
+                    keys: ['bitacora', 'f147', 'formato', 'quincenal'],
+                    response: "<b>Control de Bitácoras (F-147):</b><br>• **Frecuencia:** Cada 15 días calendario.<br>• **Firma:** Deben tener firma del aprendiz y del Jefe Inmediato (o sello empresa).<br>• **Auditoría:** El instructor debe revisar que las tareas aporten a las competencias técnicas del programa."
                 },
                 {
-                    keys: ['proceso', 'supervisión', 'instructor', 'visita'],
-                    response: "<b>El Proceso de Supervisión Técnica:</b><br>Como instructor, su rol trasciende lo administrativo; es un **Mentor Técnico**. <br><br><b>Pasos de Auditoría:</b><br>1. **Validación de Entorno:** Verificar que la empresa ofrezca condiciones de seguridad y salud (SST).<br>2. **Control de Evidencias:** No solo es recibir bitácoras, es auditar que lo que el aprendiz hace corresponda al programa.<br>3. **Verificación SofiaPlus:** El registro de inasistencias o novedades debe ser oportuno para evitar reprocesos en la certificación."
+                    keys: ['sgva', 'contrato', 'pila', 'arl'],
+                    response: "<b>Gestión Contractual:</b><br>Para Contrato de Aprendizaje, valide siempre en:<br>• **SGVA:** <a href='https://caprendizaje.sena.edu.co/' target='_blank' style='color:var(--sena-azul-claro)'>Login SGVA</a><br>• **PILA:** Verifique que el IBC sea correcto para el pago de ARL."
+                },
+                {
+                    keys: ['fuente', 'confiable', 'web', 'link'],
+                    response: "<b>Fuentes Oficiales y Confiables:</b><br>1. <a href='https://www.sena.edu.co' target='_blank'>Portal Institucional SENA</a><br>2. <a href='http://oferta.senasofiaplus.edu.co/sofia-oferta/' target='_blank'>SofiaPlus Personal</a><br>3. <a href='https://sissenagit-ub43lappzgna58vrvklfj3k.streamlit.app/' target='_blank'>Portal SEP_SENA (Gestión IA)</a><br>4. <a href='https://outlook.office.com/' target='_blank'>Correo Misena</a>"
                 }
             ];
 

@@ -13,6 +13,26 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
+    <script>
+        async function accessSEP(event) {
+            event.preventDefault();
+            const pass = prompt("Ingrese la contraseña de acceso a SEP_SENA:");
+            if (!pass) return;
+
+            const msgUint8 = new TextEncoder().encode(pass);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            const targetHash = "377e720bd8ffc1bd9870c6ff0459ffcd1ba7306426460ded500359b493b57e9b";
+
+            if (hashHex === targetHash) {
+                window.open("https://sissenagit-ub43lappzgna58vrvklfj3k.streamlit.app/", "_blank");
+            } else {
+                alert("Contraseña incorrecta. Acceso denegado.");
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -23,8 +43,16 @@
             <li><a href="fundamentos.html" class="navbar-link">Fundamentos</a></li>
             <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
             <li><a href="roles.html" class="navbar-link active">Roles</a></li>
-            <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
+            <li><a href="formatos.html" class="navbar-link">Repositorio</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
+            <li style="border-left:1px solid rgba(255,255,255,0.2); padding-left:0.8rem; margin-left:0.5rem;"><a
+                    href="#" onclick="accessSEP(event)" class="navbar-link" style="color:#4fc3f7;"><i
+                        class="fas fa-rocket"></i> SEP_SENA</a></li>
+            <li><a href="http://senasofiaplus.edu.co/sofia-public/" target="_blank" rel="noopener" class="navbar-link"
+                    style="color:#81c784;"><i class="fas fa-graduation-cap"></i> SOFIA</a></li>
+            <li><a href="https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx" target="_blank"
+                    rel="noopener" class="navbar-link" style="color:#ffb74d;"><i class="fas fa-user-tie"></i> SGVA</a>
+            </li>
         </ul>
     </nav>
 
