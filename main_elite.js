@@ -84,7 +84,7 @@ function initInstBot() {
 
     async function callGemini(prompt) {
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -108,11 +108,21 @@ function initInstBot() {
                     }]
                 })
             });
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Gemini Error:", errorData);
+                return `Lo siento, Instructor. Mi motor de IA reporta un error (${response.status}). Verifique su cuota o API Key en la consola.`;
+            }
             const data = await response.json();
-            return data.candidates[0].content.parts[0].text.replace(/\n/g, '<br>');
+            if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts) {
+                return data.candidates[0].content.parts[0].text.replace(/\n/g, '<br>');
+            } else {
+                console.error("Gemini Unexpected Response:", data);
+                return "Recibí una respuesta inesperada del motor de IA. ¿Podría intentar de nuevo?";
+            }
         } catch (error) {
-            console.error("Gemini Error:", error);
-            return "Lo siento, Instructor. Mi conexión con el motor de IA ha tenido un hipo. ¿Podría intentarlo de nuevo?";
+            console.error("Critical Gemini Call Error:", error);
+            return "Lo siento, Instructor. Mi conexión con el motor de IA ha tenido un hipo (Falla de Red). ¿Podría intentarlo de nuevo?";
         }
     }
 
