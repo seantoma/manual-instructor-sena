@@ -19,6 +19,8 @@ function initEliteComponents() {
     initInstBot();
 }
 
+const GEMINI_API_KEY = "AIzaSyC9dYIUiNGOQ-1JNNR-BdnloAgbVDMPR04";
+
 function initInstBot() {
     const fab = document.getElementById('ai-fab');
     const win = document.getElementById('chat-window');
@@ -28,6 +30,9 @@ function initInstBot() {
     const body = document.getElementById('chat-body');
 
     if (!fab || !win) return;
+
+    // Molly Rebranding - Icono Border Collie simbólico
+    fab.innerHTML = '<img src="https://img.icons8.com/color/96/border-collie.png" style="width:70%; filter: brightness(1.2);">';
 
     fab.addEventListener('click', () => win.classList.toggle('show'));
     close.addEventListener('click', () => win.classList.remove('show'));
@@ -40,8 +45,8 @@ function initInstBot() {
         body.scrollTop = body.scrollHeight;
     };
 
-    // Sugerencias rápidas
-    const suggestions = ['¿Qué es TyT?', 'Los 6 Momentos', 'Acuerdo 009', 'Bitácoras', 'Fuentes Confiables'];
+    // Sugerencias rápidas adaptadas a MOLLY
+    const suggestions = ['¿Molly, qué es TyT?', 'Los 6 Momentos', 'Acuerdo 009', 'Bitácoras', 'Fuentes Confiables'];
     const sugContainer = document.createElement('div');
     sugContainer.style.padding = '0.5rem 1rem';
     sugContainer.style.display = 'flex';
@@ -71,64 +76,52 @@ function initInstBot() {
     const showTyping = () => {
         const dot = document.createElement('div');
         dot.className = 'msg bot typing';
-        dot.innerHTML = '<i class="fas fa-microchip fa-spin"></i> Procesando motor normativo v4.0...';
+        dot.innerHTML = '<i class="fas fa-dog fa-bounce"></i> Molly está pensando...';
         dot.id = 'typing-indicator';
         body.appendChild(dot);
         body.scrollTop = body.scrollHeight;
     };
 
-    const processQuery = (q) => {
-        const query = q.toLowerCase();
-        showTyping();
-
-        setTimeout(() => {
-            const indicator = document.getElementById('typing-indicator');
-            if (indicator) indicator.remove();
-
-            let r = "Instructor, no localizo ese término en mis registros locales de la Guía 040 o Acuerdo 009. <b>¿Desea que consulte en la red global SENA?</b><br><br><div style='display:flex; gap:5px; flex-wrap:wrap;'><a href='https://www.google.com/search?q=SENA+Guia+040+" + encodeURIComponent(query) + "' target='_blank' class='btn-mini' style='background:var(--sena-verde); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Buscar en Google</a> <a href='https://sissenagit-ub43lappzgna58vrvklfj3k.streamlit.app/' target='_blank' class='btn-mini' style='background:var(--sena-azul-navy); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Consultar SEP_SENA</a></div>";
-
-            const intents = [
-                {
-                    keys: ['hola', 'bienvenido', 'saludo', 'quien eres'],
-                    response: "¡Saludos, Instructor! Soy <b>SENA_INST_BOT v4.0 (Turbo Edition)</b>.<br><br>Mi motor ha sido actualizado con:<br>• <b>Guía 040 (2023):</b> Protocolo de Momentos.<br>• <b>Acuerdo 009 (2024):</b> Nuevo Reglamento.<br>• <b>Decreto 1072:</b> Normativa laboral y ARL.<br><br>¿En qué proceso de auditoría o acompañamiento puedo asistirle hoy?"
-                },
-                {
-                    keys: ['tyt', 'examen', 'saber', 'requisito'],
-                    response: "<b>Asunto: Pruebas Saber TyT</b><br>Basado en la Circular 2024 y Guía de Certificación:<br>1. **Obligatoriedad:** Es requisito indispensable para certificar Tecnólogos.<br>2. **Evidencia:** El aprendiz debe cargar el reporte de presentación (o asistencia) en su carpeta.<br>3. **Fuente Confiable:** <a href='https://www.icfes.gov.co/' target='_blank' style='color:var(--sena-azul-claro)'>Portal Oficial ICFES</a>"
-                },
-                {
-                    keys: ['momento', 'paso', 'etapa', 'fase'],
-                    response: "<b>Estructura Técnica (Guía 040):</b><br>Los 6 Momentos son el pilar de la supervisión. Destacan:<br>• **M1 (Inducción):** Validación de RAPs al 100%.<br>• **M3 (Concertación):** Primeros 15 días, firma de F-023.<br>• **M6 (Certificación):** Cierre definitivo.<br><br><i>Fuente: Manual de Procedimiento GFPI.</i>"
-                },
-                {
-                    keys: ['acuerdo 009', 'reglamento', 'sancion', 'falta', 'deserción'],
-                    response: "<b>Alerta Normativa - Acuerdo 009 de 2024:</b><br>• **Deserción:** 3 días de inasistencia injustificada en la empresa.<br>• **Etapa Productiva:** El instructor debe reportar novedades en SofiaPlus máximo 5 días después de detectarlas.<br>• **Fuente Legal:** <a href='http://noticias.sena.edu.co/' target='_blank' style='color:var(--sena-azul-claro)'>Repositorio Normativo SENA</a>"
-                },
-                {
-                    keys: ['bitacora', 'f147', 'formato', 'quincenal'],
-                    response: "<b>Control de Bitácoras (F-147):</b><br>• **Frecuencia:** Cada 15 días calendario.<br>• **Firma:** Deben tener firma del aprendiz y del Jefe Inmediato (o sello empresa).<br>• **Auditoría:** El instructor debe revisar que las tareas aporten a las competencias técnicas del programa."
-                },
-                {
-                    keys: ['sgva', 'contrato', 'pila', 'arl'],
-                    response: "<b>Gestión Contractual:</b><br>Para Contrato de Aprendizaje, valide siempre en:<br>• **SGVA:** <a href='https://caprendizaje.sena.edu.co/' target='_blank' style='color:var(--sena-azul-claro)'>Login SGVA</a><br>• **PILA:** Verifique que el IBC sea correcto para el pago de ARL."
-                },
-                {
-                    keys: ['fuente', 'confiable', 'web', 'link'],
-                    response: "<b>Fuentes Oficiales y Confiables:</b><br>1. <a href='https://www.sena.edu.co' target='_blank'>Portal Institucional SENA</a><br>2. <a href='http://oferta.senasofiaplus.edu.co/sofia-oferta/' target='_blank'>SofiaPlus Personal</a><br>3. <a href='https://sissenagit-ub43lappzgna58vrvklfj3k.streamlit.app/' target='_blank'>Portal SEP_SENA (Gestión IA)</a><br>4. <a href='https://outlook.office.com/' target='_blank'>Correo Misena</a>"
-                }
-            ];
-
-            let bestMatch = null;
-            let maxScore = 0;
-            intents.forEach(intent => {
-                let score = 0;
-                intent.keys.forEach(key => { if (query.includes(key)) score++; });
-                if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
+    async function callGemini(prompt) {
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: `Eres MOLLY, una asistente experta en el SENA Etapa Productiva. Tienes la personalidad de una perrita Border Collie inteligente, atenta y profesional. Tu objetivo es ayudar a los instructores con la Guía 040, Acuerdo 009 de 2024 y procesos de certificación. 
+                        
+                        CONTEXTO CLAVE:
+                        - Guía 040: Define los 6 momentos de seguimiento.
+                        - Acuerdo 009 (2024): Nuevo reglamento del aprendiz.
+                        - TyT: Requisito indispensable para tecnólogos.
+                        - Bitácoras (F-147): Deben ser quincenales.
+                        
+                        REGLAS DE RESPUESTA:
+                        1. Sé amable y usa un tono profesional pero cercano (estilo Border Collie servicial).
+                        2. Si mencionas enlaces, usa los oficiales que conoces: SofiaPlus, SGVA, SEP_SENA.
+                        3. Tus respuestas deben ser precisas y basadas en la normativa SENA.
+                        
+                        Consulta del Instructor: ${prompt}`
+                        }]
+                    }]
+                })
             });
+            const data = await response.json();
+            return data.candidates[0].content.parts[0].text.replace(/\n/g, '<br>');
+        } catch (error) {
+            console.error("Gemini Error:", error);
+            return "Lo siento, Instructor. Mi conexión con el motor de IA ha tenido un hipo. ¿Podría intentarlo de nuevo?";
+        }
+    }
 
-            if (bestMatch) r = bestMatch;
-            addMsg(r, 'bot');
-        }, 1200);
+    const processQuery = async (q) => {
+        showTyping();
+        const response = await callGemini(q);
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) indicator.remove();
+        addMsg(response, 'bot');
     };
 
     send.addEventListener('click', () => {
