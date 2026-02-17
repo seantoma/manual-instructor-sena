@@ -4,15 +4,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Utilidades Docentes</title>
-    <meta name="description"
-        content="Simuladores automatizados para el cálculo de plazos de la Guía 040 y carga horaria docente.">
+    <title>SENA Portal Elite - Herramientas de Control</title>
+    <meta name="description" content="Calculadora técnica de plazos y vencimientos para instructores SENA.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .calc-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-elite);
+            border: 1px solid var(--border-soft);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .input-group label {
+            font-weight: 700;
+            color: var(--sena-azul-navy);
+            font-size: 1.1rem;
+        }
+
+        select,
+        input[type="date"] {
+            padding: 1rem;
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .btn-calc {
+            background: var(--sena-verde);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(57, 169, 0, 0.2);
+        }
+
+        .btn-calc:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(57, 169, 0, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 3rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--sena-verde);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.3rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 3px solid var(--sena-verde);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .card-result {
+            background: var(--bg-global);
+            border: 1px solid var(--border-soft);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border-left: 5px solid var(--sena-azul-navy);
+        }
+
+        .date-badge {
+            background: var(--sena-azul-navy);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,43 +132,135 @@
         <ul class="navbar-nav">
             <li><a href="index.html" class="navbar-link">Dashboard</a></li>
             <li><a href="fundamentos.html" class="navbar-link">Fundamentos</a></li>
-            <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
-            <li><a href="roles.html" class="navbar-link">Roles</a></li>
-            <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
+            <li><a href="guia_master.html" class="navbar-link">Guía Master</a></li>
             <li><a href="herramientas.html" class="navbar-link active">Herramientas</a></li>
+            <li><a href="formatos.html" class="navbar-link">Repositorio</a></li>
         </ul>
     </nav>
 
-    <main class="main-wrapper">
-        <header class="hero">
-            <div class="hero-text">
-                <div class="hero-meta">PRECISIÓN NORMATIVA</div>
-                <h1>Utilidades de Gestión</h1>
-                <p>Simuladores automatizados para el cálculo de plazos de la Guía 040 y carga horaria docente.</p>
+    <div class="calc-container">
+        <div style="text-align:center; margin-bottom:3rem;">
+            <h1 style="color:var(--sena-azul-navy); font-family:'Montserrat'; margin-bottom:1rem;">Proyectar Cronograma
+                de Supervisión</h1>
+            <p style="color:var(--text-muted);">Calcule los plazos de auditoría y visitas técnicas según la norma GFPI.
+            </p>
+        </div>
+
+        <div class="input-group">
+            <label>Nivel de Formación del Grupo:</label>
+            <select id="programType">
+                <option value="tecnico">Técnico (6 Meses)</option>
+                <option value="tecnologo">Tecnólogo (9 Meses)</option>
+            </select>
+
+            <label>Fecha de Inicio del Aprendiz:</label>
+            <input type="date" id="startDate">
+
+            <button class="btn-calc" onclick="calculateDates()">
+                <i class="fas fa-microchip"></i> Generar Plan de Auditoría
+            </button>
+        </div>
+
+        <div id="resultsArea" class="results">
+            <h3 style="color: var(--sena-azul-navy); text-align: center; margin-bottom: 2rem;">Ruta Técnica de
+                Supervisión</h3>
+            <div class="timeline" id="timelineContainer">
+                <!-- JS content -->
             </div>
-        </header>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn-calc" style="background:var(--sena-azul-navy);" onclick="window.print()">
+                    <i class="fas fa-print"></i> Exportar Protocolo (PDF)
+                </button>
+            </div>
+        </div>
+    </div>
 
-        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Confirmar existencia de los 3 formatos
-            F023 firmados</li>
-        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar registro de bitácoras mensuales
-            (F147)</li>
-        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Comprobar afiliación a ARL y EPS durante
-            toda la EP</li>
-        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Obtener certificación laboral/práctica con
-            fechas precisas</li>
-        </ul>
-        </section>
-
-        <footer class="footer">
-            <p>© 2025 - Portal Elite del Instructor SENA</p>
-        </footer>
-    </main>
-
-    <button id="btn-back-to-top" title="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- AI AGENT -->
+    <div id="ai-fab"><i class="fas fa-robot"></i></div>
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <span><b>SENA_INST_BOT v3.5</b></span>
+            <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="msg bot">Instructor, ¿necesita proyectar fechas de auditoría o conocer plazos legales?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte sobre plazos, bitácoras...">
+            <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script src="main_elite.js"></script>
+    <script>
+        function calculateDates() {
+            const dateInput = document.getElementById('startDate').value;
+            const type = document.getElementById('programType').value;
+
+            if (!dateInput) {
+                Swal.fire({ icon: 'warning', title: 'Fecha requerida', text: 'Seleccione el inicio de la Etapa Productiva.' });
+                return;
+            }
+
+            const start = new Date(dateInput);
+            const userTimezoneOffset = start.getTimezoneOffset() * 60000;
+            const startDate = new Date(start.getTime() + userTimezoneOffset);
+            const timeline = document.getElementById('timelineContainer');
+            timeline.innerHTML = '';
+
+            const addDays = (d, days) => { let r = new Date(d); r.setDate(r.getDate() + days); return r; };
+            const addMonths = (d, ms) => { let r = new Date(d); r.setMonth(r.getMonth() + ms); return r; };
+
+            let milestones = [];
+
+            // Inicio
+            milestones.push({ title: "Apertura de Portafolio Técnico", date: startDate, desc: "Apertura de archivos y validación de afiliación ARL.", doc: "F-165 (Copia)", icon: "fa-folder-plus" });
+
+            // Concertación
+            milestones.push({ title: "Vencimiento: Visita 01 (Concertación)", date: addDays(startDate, 15), desc: "Plazo máximo para suscribir el plan de trabajo con el jefe.", doc: "F-023 Parte 1", icon: "fa-handshake" });
+
+            // Iteración de Bitácoras con Foco Docente (Revisiones)
+            let months = (type === 'tecnologo') ? 9 : 6;
+            for (let i = 1; i <= months; i++) {
+                milestones.push({
+                    title: `Auditoría Bitácora ${i}`,
+                    date: addDays(addMonths(startDate, i), 5), // 5 días hábiles después del mes
+                    desc: `Fecha límite para retroalimentación y firma de la bitácora mensual ${i}.`,
+                    doc: `F-147 Revisado`,
+                    icon: "fa-check-circle"
+                });
+            }
+
+            // Visita Parcial
+            let parcialMonth = (type === 'tecnologo') ? 4 : 3;
+            milestones.push({ title: "Vencimiento: Visita 02 (Parcial)", date: addMonths(startDate, parcialMonth), desc: "Seguimiento técnico intermedio. Evaluación de competencias.", doc: "F-023 Parte 2", icon: "fa-search" });
+
+            // Visita Final
+            milestones.push({ title: "Cierre: Visita 03 (Final)", date: addDays(addMonths(startDate, months), 2), desc: "Emisión de juicio evaluativo y paz y salvo.", doc: "F-023 Final + Juicio Sofía", icon: "fa-graduation-cap" });
+
+            milestones.sort((a, b) => a.date - b.date);
+
+            milestones.forEach(m => {
+                const ds = m.date.toLocaleDateString('es-ES', { weekday: 'short', day: '2-digit', month: 'long', year: 'numeric' });
+                timeline.innerHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="card-result">
+                            <span class="date-badge">${ds}</span>
+                            <h4 style="margin:0.5rem 0; color:var(--sena-azul-navy);"><i class="fas ${m.icon}" style="color:var(--sena-verde);"></i> ${m.title}</h4>
+                            <p style="margin:0; font-size:0.9rem;">${m.desc}</p>
+                            <small style="color:var(--sena-verde); font-weight:700;">Evidencia: ${m.doc}</small>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('resultsArea').style.display = 'block';
+            document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth' });
+            Swal.fire({ icon: 'success', title: 'Protocolo Generado', text: 'Cronograma de auditoría listo para seguimiento.', timer: 2000, showConfirmButton: false });
+        }
+    </script>
 </body>
 
 </html>

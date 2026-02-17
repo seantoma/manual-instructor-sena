@@ -4,15 +4,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Centro de Documentación</title>
+    <title>SENA Portal Elite - Repositorio de Formatos</title>
     <meta name="description"
-        content="Acceso a formatos institucionales oficiales para la gestión de la Etapa Productiva.">
+        content="Repositorio central de formatos GFPI y guías de auditoría para instructores SENA.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style_elite.css">
+    <style>
+        .repo-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .guide-card {
+            background: white;
+            border: 1px solid var(--border-soft);
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .guide-header {
+            background: var(--bg-global);
+            color: var(--sena-azul-navy);
+            padding: 1.5rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            border-left: 5px solid var(--sena-verde);
+            transition: 0.3s;
+        }
+
+        .guide-header:hover {
+            background: rgba(57, 169, 0, 0.05);
+        }
+
+        .guide-body {
+            padding: 2.5rem 2rem;
+            display: none;
+            border-top: 1px solid var(--border-soft);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .guide-body.show {
+            display: block;
+        }
+
+        .tabs-elite {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--sena-verde);
+            border-bottom-color: var(--sena-verde);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-global);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        th {
+            background: var(--sena-azul-navy);
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .btn-download {
+            background: var(--sena-verde);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(57, 169, 0, 0.3);
+        }
+    </style>
 </head>
 
 <body>
@@ -21,90 +138,150 @@
         <ul class="navbar-nav">
             <li><a href="index.html" class="navbar-link">Dashboard</a></li>
             <li><a href="fundamentos.html" class="navbar-link">Fundamentos</a></li>
-            <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
-            <li><a href="roles.html" class="navbar-link">Roles</a></li>
-            <li><a href="formatos.html" class="navbar-link active">Descargas</a></li>
+            <li><a href="guia_master.html" class="navbar-link">Guía Master</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
+            <li><a href="formatos.html" class="navbar-link active">Repositorio</a></li>
         </ul>
     </nav>
 
-    <main class="main-wrapper">
-        <header class="hero">
-            <div class="hero-text">
-                <div class="hero-meta">SISTEMA INTEGRAL DE CALIDAD</div>
-                <h1>Centro de Documentación</h1>
-                <p>Repositorio oficial de formatos GFPI actualizados para el seguimiento técnico-pedagógico.</p>
+    <header class="header-elite"
+        style="padding: 3rem 2rem; background: var(--sena-azul-navy); color: white; text-align: center;">
+        <h1 style="font-family:'Montserrat'; font-size:2.8rem; margin-bottom:1rem;">Repositorio Documental</h1>
+        <p style="opacity:0.8; font-size:1.1rem;">Kit de Auditoría y Formatos Oficiales GFPI</p>
+    </header>
+
+    <div class="repo-container">
+
+        <!-- Formato F-023 -->
+        <div class="guide-card">
+            <div class="guide-header" onclick="toggleGuide(this)">
+                <span><i class="fas fa-file-excel"></i> Formato GFPI-F-023 (Planeación y Seguimiento)</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
-        </header>
-
-        <section
-            style="background:white; padding:3rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-elite);">
-            <h2 style="margin-bottom:2rem;"><i class="fas fa-file-download" style="color:var(--sena-verde)"></i>
-                Formatos Vigentes</h2>
-
-            <div style="display:flex; flex-direction:column; gap:1.5rem;">
-                <div
-                    style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; background:var(--bg-global); border-radius:var(--radius-md); border-left:5px solid var(--sena-verde);">
-                    <div>
-                        <strong style="font-size:1.1rem; color:var(--sena-azul-navy);">GFPI-F-023 v.3</strong>
-                        <p style="color:var(--text-muted); font-size:0.9rem;">Planeación, Seguimiento y Evaluación Etapa
-                            Productiva</p>
-                    </div>
-                    <a href="Formatos/Seleccion etapa productiva165V3.xlsx" class="btn-back-to-top"
-                        style="display:flex; position:static; width:auto; height:auto; padding:0.6rem 1.2rem; background:var(--sena-azul-navy); color:white; border-radius:8px; text-decoration:none; font-size:0.8rem;">Descargar
-                        Excel</a>
+            <div class="guide-body show">
+                <p>Este es el documento maestro de la Etapa Productiva. Como instructor, usted debe asegurar la firma
+                    oportuna en sus 3 partes constitutivas.</p>
+                <div class="tabs-elite">
+                    <button class="tab-btn active" onclick="openTab(event, 'f023-docente')">Criterios de
+                        Auditoría</button>
+                    <button class="tab-btn" onclick="openTab(event, 'f023-descarga')">Descargas</button>
                 </div>
 
-                <div
-                    style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; background:var(--bg-global); border-radius:var(--radius-md); border-left:5px solid var(--accent-amber);">
-                    <div>
-                        <strong style="font-size:1.1rem; color:var(--sena-azul-navy);">GFPI-F-147</strong>
-                        <p style="color:var(--text-muted); font-size:0.9rem;">Bitácora Mensual de Seguimiento</p>
-                    </div>
-                    <a href="#" class="btn-back-to-top"
-                        style="display:flex; position:static; width:auto; height:auto; padding:0.6rem 1.2rem; background:var(--sena-azul-navy); color:white; border-radius:8px; text-decoration:none; font-size:0.8rem;">Descargar
-                        Formato</a>
+                <div id="f023-docente" class="tab-content active">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parte</th>
+                                <th>Requisito Docente</th>
+                                <th>Plazo Legal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Concertación</td>
+                                <td>Verificar pertinencia técnica de actividades.</td>
+                                <td>Mes 01 (Primeras 2 semanas)</td>
+                            </tr>
+                            <tr>
+                                <td>Seguimiento</td>
+                                <td>Evaluar progreso y factores actitudinales.</td>
+                                <td>Mes 03-04 (Intermedio)</td>
+                            </tr>
+                            <tr>
+                                <td>Evaluación</td>
+                                <td>Cierre y determinación de juicio final.</td>
+                                <td>Mes 06 / 09 (Cierre)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div
-                    style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; background:var(--bg-global); border-radius:var(--radius-md); border-left:5px solid var(--accent-indigo);">
-                    <div>
-                        <strong style="font-size:1.1rem; color:var(--sena-azul-navy);">GFPI-F-165</strong>
-                        <p style="color:var(--text-muted); font-size:0.9rem;">Solicitud de Cambio de Alternativa</p>
+                <div id="f023-descarga" class="tab-content">
+                    <div style="background:var(--bg-global); padding:2rem; border-radius:15px; text-align:center;">
+                        <select id="f023-select" style="margin-bottom:1rem; padding:0.5rem; border-radius:8px;">
+                            <option value="Formatos/Visita 1 GFPI-F023.xlsx">Versión Concertación</option>
+                            <option value="Formatos/Visita 2 GFPI-F023.xlsx">Versión Seguimiento</option>
+                            <option value="Formatos/Visita 3 GFPI-F023.xlsx">Versión Evaluación Final</option>
+                        </select><br>
+                        <a href="#" class="btn-download" onclick="downloadFile('f023-select')"><i
+                                class="fas fa-download"></i> Descargar Formato</a>
                     </div>
-                    <a href="#" class="btn-back-to-top"
-                        style="display:flex; position:static; width:auto; height:auto; padding:0.6rem 1.2rem; background:var(--sena-azul-navy); color:white; border-radius:8px; text-decoration:none; font-size:0.8rem;">Descargar
-                        Formato</a>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <footer class="footer"
-            style="margin-top:5rem; text-align:center; padding:3rem; color:var(--text-muted); border-top:var(--border-soft);">
-            <p>© 2025 - Portal Elite del Instructor SENA</p>
-        </footer>
-    </main>
+        <!-- Formato F-147 -->
+        <div class="guide-card">
+            <div class="guide-header" onclick="toggleGuide(this)">
+                <span><i class="fas fa-book"></i> Formato GFPI-F-147 (Bitácoras)</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="guide-body">
+                <p>Evidencia periódica del desempeño del aprendiz. Su revisión debe ser rigurosa y técnica.</p>
+                <div class="tabs-elite">
+                    <button class="tab-btn active" onclick="openTab(event, 'f147-check')">Lista de Chequeo</button>
+                    <button class="tab-btn" onclick="openTab(event, 'f147-file')">Descarga</button>
+                </div>
+                <div id="f147-check" class="tab-content active">
+                    <ul style="padding-left:1.5rem; color:var(--text-muted); line-height:2;">
+                        <li>Verificar que las fechas correspondan al periodo quincenal/mensual.</li>
+                        <li>Validar la firma del jefe inmediato (obligatoria para validez).</li>
+                        <li>Retroalimentar actividades que no sean técnicas o estén mal descritas.</li>
+                    </ul>
+                </div>
+                <div id="f147-file" class="tab-content" style="text-align:center; padding:1rem;">
+                    <a href="Formatos/BITACORAS GFPI-F-147V4.xlsx" class="btn-download" download><i
+                            class="fas fa-file-excel"></i> Descargar Bitácora F-147</a>
+                </div>
+            </div>
+        </div>
 
-    <!-- UI Components -->
-    <button id="btn-back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 - Portal Elite del Instructor SENA | Repositorio v4.0</p>
+    </footer>
+
+    <!-- AI AGENT -->
     <div id="ai-fab"><i class="fas fa-robot"></i></div>
     <div id="chat-window" class="chat-window">
         <div class="chat-header">
-            <span><b>SENA_INST_BOT</b> Assistant</span>
+            <span><b>SENA_INST_BOT v3.5</b></span>
             <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
                     class="fas fa-times"></i></button>
         </div>
         <div id="chat-body" class="chat-body">
-            <div class="msg bot">Instructor, ¿necesita la versión más reciente del F023 para la visita de concertación?
-            </div>
+            <div class="msg bot">Instructor, ¿necesita ayuda con los formatos GFPI o la auditoría documental?</div>
         </div>
         <div class="chat-footer">
-            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte por formatos...">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte sobre F023, F147...">
             <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
     <script src="main_elite.js"></script>
+    <script>
+        function toggleGuide(header) {
+            header.classList.toggle('active');
+            header.nextElementSibling.classList.toggle('show');
+        }
+
+        function openTab(evt, tabName) {
+            const body = evt.target.closest('.guide-body');
+            body.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            body.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            body.querySelector(`#${tabName}`).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function downloadFile(id) {
+            const sel = document.getElementById(id);
+            const link = document.createElement('a');
+            link.href = sel.value;
+            link.download = sel.value.split('/').pop();
+            link.click();
+        }
+    </script>
 </body>
 
 </html>
