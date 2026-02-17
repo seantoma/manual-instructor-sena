@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Los 6 Momentos de Instrucción</title>
+    <title>SENA Portal Elite - Guía Master de Seguimiento EP</title>
     <meta name="description"
-        content="Guía técnica paso a paso para el seguimiento de la Etapa Productiva por parte del Instructor.">
+        content="Manual paso a paso para instructores: desde la inducción hasta la certificación final.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
@@ -20,9 +20,9 @@
         <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
         <ul class="navbar-nav">
             <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="fundamentos.html" class="navbar-link">Fundamentos</a></li>
             <li><a href="momentos.html" class="navbar-link active">Procesos</a></li>
             <li><a href="roles.html" class="navbar-link">Roles</a></li>
-            <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
             <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
         </ul>
@@ -31,105 +31,150 @@
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">GUÍA OPERATIVA GFPI-G-040</div>
-                <h1>Ruta de Seguimiento Docente</h1>
-                <p>Cumplimiento normativo mediante procesos segmentados y criterios de evaluación técnica.</p>
+                <div class="hero-meta">MANUAL ESTÁNDAR GFPI-G-040</div>
+                <h1>Guía Master de Procesos</h1>
+                <p>La ruta crítica de supervisión: reciclamos la teoría del aprendiz para potenciar el control docente
+                    de élite.</p>
             </div>
-            <div class="bookings-card" style="min-width:250px;">
-                <h4 style="margin-bottom:1rem;">Progreso General</h4>
-                <div style="background:rgba(255,255,255,0.1); height:12px; border-radius:10px; overflow:hidden;">
-                    <div id="progressBar"
-                        style="width:0%; height:100%; background:var(--sena-verde); transition:0.5s; text-align:center; font-size:10px; color:white;">
-                        0%</div>
+            <div class="bookings-card" style="min-width:280px;">
+                <h4 style="margin-bottom:1rem;">Control de Calidad Docente</h4>
+                <div class="progress-container">
+                    <div id="progressBar"></div>
                 </div>
-                <p style="font-size:0.8rem; margin-top:10px;" id="progressText">0/0 ítems completados</p>
+                <p style="font-size:0.8rem; margin-top:10px;" id="progressText">Verificando hitos normativos...</p>
             </div>
         </header>
 
-        <!-- Segmented Steps -->
-        <div class="timeline">
-            <!-- Paso 1 -->
-            <div class="timeline-item">
-                <span class="timeline-badge" style="background:var(--sena-azul-navy)">PASO 1</span>
-                <h3>Inducción y Taller de Vida Laboral</h3>
-                <p><b>Responsabilidad:</b> Alistamiento administrativo y orientación inicial.</p>
-                <ul class="checklist">
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Programar taller (4 meses antes de fin
-                        de lectiva).</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Socializar alternativas de Etapa
-                        Productiva.</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Orientar sobre deberes y derechos del
-                        aprendiz.</li>
-                </ul>
+        <section class="timeline">
+            <!-- FASE PREVIA -->
+            <div class="timeline-item" style="border-left: 5px solid var(--accent-indigo);">
+                <span class="timeline-badge" style="background:var(--accent-indigo)">FASE 01: ALISTAMIENTO</span>
+                <h3>Inducción y Verificación de Requisitos</h3>
+                <p>Antes de que el aprendiz inicie, el instructor debe validar su idoneidad administrativa.</p>
+                <div class="subsection">
+                    <h5><i class="fas fa-list-check"></i> Check-list de Validación (Rol Instructor)</h5>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar aprobación del 100% de los
+                            RAP de Etapa Lectiva en SofiaPlus.</li>
+                        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar estado "EN FORMACIÓN"
+                            del aprendiz.</li>
+                        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Confirmar asistencia al Taller de
+                            Vida Laboral (Momento 1).</li>
+                        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar que la alternativa
+                            seleccionada (F165) tenga aval de Coordinación.</li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Paso 2 -->
-            <div class="timeline-item">
-                <span class="timeline-badge" style="background:var(--sena-azul-navy)">PASO 2</span>
-                <h3>Capacitación en Registro de Bitácoras</h3>
-                <p><b>Responsabilidad:</b> Instrucción técnica sobre el Formato F-147.</p>
-                <ul class="checklist">
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Capacitar en diligenciamiento del
-                        F147.</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar selección de alternativa en
-                        Caprendizaje.</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar afiliación a ARL/EPS del
-                        aprendiz.</li>
-                </ul>
-            </div>
-
-            <!-- Paso 3 -->
+            <!-- FASE INICIAL -->
             <div class="timeline-item" style="border-left: 5px solid var(--sena-verde);">
-                <span class="timeline-badge" style="background:var(--sena-verde)">PASO 3</span>
-                <h3>Visita de Concertación (Crucial)</h3>
-                <p><b>Meta:</b> Definir el plan de capacitación en la empresa.</p>
-                <div class="info-box info" style="margin:1rem 0;">
-                    <i class="fas fa-calendar-alt"></i>
-                    <p><b>Plazo Legal:</b> Primeros 15 días hábiles del inicio de la EP.</p>
+                <span class="timeline-badge" style="background:var(--sena-verde)">FASE 02: CONCERTACIÓN (Visita
+                    1)</span>
+                <h3>Momento de Oro: El Plan de Capacitación</h3>
+                <p>Es el contrato pedagógico entre el SENA, el Aprendiz y la Empresa.</p>
+                <div class="info-box info">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Plazo Legal Imperativo</strong>
+                        <p>Debe ejecutarse en los primeros **15 días hábiles** tras el inicio de la EP. Sin esto, el
+                            seguimiento no tiene base legal.</p>
+                    </div>
                 </div>
                 <ul class="checklist">
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Diligenciar F023 (Sección
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Firmar Formato GFPI-F-023 (Sección
                         Concertación).</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Definir competencias y funciones
-                        laborales.</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Obtener firmas de las 3 partes
-                        (Instructor, Aprendiz, Jefe).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Definir tareas específicas alineadas
+                        con las competencias del programa.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar registro del aprendiz en ARL
+                        (Crucial para seguridad).</li>
                 </ul>
             </div>
 
-            <!-- Paso 4 -->
-            <div class="timeline-item">
-                <span class="timeline-badge" style="background:var(--accent-amber)">PASO 4</span>
-                <h3>Seguimiento Parcial</h3>
-                <p><b>Meta:</b> Verificación de avances y retroalimentación de bitácoras.</p>
+            <!-- FASE DE SEGUIMIENTO -->
+            <div class="timeline-item" style="border-left: 5px solid var(--accent-amber);">
+                <span class="timeline-badge" style="background:var(--accent-amber)">FASE 03: GESTIÓN DE BITÁCORAS</span>
+                <h3>Control de Evidencias (F147)</h3>
+                <p>El instructor debe supervisar el flujo de bitácoras con rigor técnico.</p>
+                <div class="card" style="margin-top:1.5rem; background: #fffcf0; border: 1px solid #ffe58f;">
+                    <h5><i class="fas fa-search"></i> ¿Qué debe verificar el Instructor en la Bitácora?</h5>
+                    <ul style="padding-left:1.5rem; margin-top:0.5rem; font-size:0.9rem;">
+                        <li><strong>Relación Técnica:</strong> ¿Las actividades descritas realmente desarrollan las
+                            competencias?</li>
+                        <li><strong>Frecuencia:</strong> ¿Se están entregando cada 15 días o mensualmente según el plan?
+                        </li>
+                        <li><strong>Firmas:</strong> ¿Tienen el aval y sello del jefe inmediato (Ente Coformador)?</li>
+                    </ul>
+                </div>
+                <ul class="checklist" style="margin-top:2rem;">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Retroalimentar bitácoras en un máximo
+                        de **5 días hábiles**.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita de Seguimiento Parcial
+                        (Visita 2).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Documentar avances y áreas de mejora
+                        en el F023.</li>
+                </ul>
+            </div>
+
+            <!-- FASE DE CIERRE -->
+            <div class="timeline-item" style="border-left: 5px solid var(--sena-azul-navy);">
+                <span class="timeline-badge" style="background:var(--sena-azul-navy)">FASE 04: EVALUACIÓN Y
+                    CIERRE</span>
+                <h3>Cierre Técnico y Juicio Evaluativo</h3>
+                <p>Consolidación de resultados y verificación de la carpeta de evidencias.</p>
+                <div class="info-box warning">
+                    <i class="fas fa-folder-open"></i>
+                    <div>
+                        <strong>Verificación de Carpeta Final</strong>
+                        <p>El instructor debe asegurar que el aprendiz entregue: Identidad 150%, Carnet destruido,
+                            Bitácoras completas, F023 firmados y Certificado de la empresa.</p>
+                    </div>
+                </div>
                 <ul class="checklist">
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Revisar bitácoras mensuales (Plazo: 5
-                        días hábiles).</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar segunda visita técnica de
-                        seguimiento.</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Diligenciar F023 (Sección
-                        Seguimiento).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita Final de Evaluación
+                        (Visita 3).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Recibir Certificación de la Empresa
+                        (Con fechas y funciones exactas).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Emitir el juicio evaluativo en
+                        SofiaPlus (**Máximo 8 días hábiles** tras el cierre).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Verificar cargue de evidencias en el
+                        repositorio del Centro.</li>
                 </ul>
             </div>
+        </section>
 
-            <!-- Paso 5 -->
-            <div class="timeline-item">
-                <span class="timeline-badge" style="background:var(--accent-indigo)">PASO 5</span>
-                <h3>Evaluación Final y Cierre</h3>
-                <p><b>Meta:</b> Emisión de juicio evaluativo y certificación.</p>
-                <ul class="checklist">
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar Visita Final y F023 (Sección
-                        Evaluación).</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Validar entrega de certificado laboral
-                        de la empresa.</li>
-                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Registrar juicio en SofiaPlus (8 días
-                        hábiles).</li>
-                </ul>
+        <section class="card" style="margin-top:3rem;">
+            <h2><i class="fas fa-chart-bar"></i> Resumen de Tiempos para el Instructor</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Actividad Administrativa</th>
+                            <th>Plazo para el Instructor</th>
+                            <th>Observación de Calidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Visita de Concertación**</td>
+                            <td>Primeros 15 días hábiles</td>
+                            <td>Sin firmas no hay validez legal.</td>
+                        </tr>
+                        <tr>
+                            <td>**Retroalimentación Bitácoras**</td>
+                            <td>5 días hábiles</td>
+                            <td>Debe haber comentario pedagógico.</td>
+                        </tr>
+                        <tr>
+                            <td>**Emisión de Juicio**</td>
+                            <td>8 días hábiles tras recibir documentos</td>
+                            <td>Evite demoras en la certificación.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </section>
 
-        <footer class="footer"
-            style="margin-top:5rem; text-align:center; padding:3rem; color:var(--text-muted); border-top:var(--border-soft);">
+        <footer class="footer">
             <p>© 2025 - Portal Elite del Instructor SENA</p>
         </footer>
     </main>
@@ -144,11 +189,11 @@
                     class="fas fa-times"></i></button>
         </div>
         <div id="chat-body" class="chat-body">
-            <div class="msg bot">Instructor, ¿desea revisar los criterios de evaluación del Momento 5 o tiene dudas
-                sobre el Formato F023?</div>
+            <div class="msg bot">Instructor, ¿necesita que le ayude a validar los requisitos para el cierre de un
+                aprendiz?</div>
         </div>
         <div class="chat-footer">
-            <input type="text" id="chat-input" class="chat-input" placeholder="Consulte la Guía 040...">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte sobre la Guía 040...">
             <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>

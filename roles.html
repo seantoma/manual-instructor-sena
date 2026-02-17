@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Portal Elite - Roles y Responsabilidades</title>
+    <title>SENA Portal Elite - Actores y Responsabilidades Técnicas</title>
     <meta name="description"
-        content="Detalle de los roles del Instructor, Aprendiz y Ente Coformador en la Etapa Productiva.">
+        content="Definición técnica de los roles de Instructor, Aprendiz y Ente Coformador según la Guía 040.">
     <link rel="icon" href="https://www.sena.edu.co/favicon.ico" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"
@@ -20,9 +20,9 @@
         <a href="index.html" class="navbar-brand">SENA <span>PORTAL ELITE</span></a>
         <ul class="navbar-nav">
             <li><a href="index.html" class="navbar-link">Dashboard</a></li>
+            <li><a href="fundamentos.html" class="navbar-link">Fundamentos</a></li>
             <li><a href="momentos.html" class="navbar-link">Procesos</a></li>
             <li><a href="roles.html" class="navbar-link active">Roles</a></li>
-            <li><a href="alternativas.html" class="navbar-link">Alternativas</a></li>
             <li><a href="formatos.html" class="navbar-link">Descargas</a></li>
             <li><a href="herramientas.html" class="navbar-link">Herramientas</a></li>
         </ul>
@@ -31,29 +31,87 @@
     <main class="main-wrapper">
         <header class="hero">
             <div class="hero-text">
-                <div class="hero-meta">ACTORES DEL PROCESO</div>
-                <h1>Roles y Compromisos</h1>
-                <p>La tríada del éxito en la Etapa Productiva: Instructor, Aprendiz y Empresa.</p>
+                <div class="hero-meta">ACTORES Y COMPROMISOS</div>
+                <h1>Tríada de Responsabilidad</h1>
+                <p>El éxito de la Etapa Productiva depende de la sinergia técnica entre el Instructor, el Aprendiz y el
+                    Ente Coformador.</p>
             </div>
         </header>
 
-        día antes)</li>
-        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Facilitar el seguimiento del
-            instructor</li>
-        <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Certificar las funciones del aprendiz
-        </li>
-        </ul>
-        </div>
+        <section class="card-grid"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:2rem;">
+            <!-- Instructor Role -->
+            <div class="elite-card green">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h4>Instructor de Seguimiento</h4>
+                <p>Garante de la calidad pedagógica y el cumplimiento de los estándares de formación en la empresa.</p>
+                <ul class="checklist" style="margin-top:1.5rem;">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Realizar 3 visitas técnicas
+                        (Concertación, Seguimiento, Evaluación).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Valorar y firmar las bitácoras
+                        mensuales (F147).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Reportar novedades de deserción o
+                        cambio de alternativa.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Emitir juicio evaluativo final en
+                        Sofía Plus.</li>
+                </ul>
+            </div>
+
+            <!-- Apprentice Role -->
+            <div class="elite-card blue">
+                <i class="fas fa-user-graduate"></i>
+                <h4>Aprendiz SENA</h4>
+                <p>Actor principal encargado de la aplicación técnica de sus conocimientos y el autoregistro de su
+                    progreso.</p>
+                <ul class="checklist" style="margin-top:1.5rem;">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Registrar y subir bitácoras F147 cada
+                        15 días (quincenales).</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Mantener comunicación activa con el
+                        instructor.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Cumplir con el reglamento interno de
+                        la empresa.</li>
+                </ul>
+            </div>
+
+            <!-- Company Role -->
+            <div class="elite-card orange">
+                <i class="fas fa-building"></i>
+                <h4>Ente Coformador</h4>
+                <p>La organización oferente que brinda el espacio real para la práctica y designa un jefe inmediato.</p>
+                <ul class="checklist" style="margin-top:1.5rem;">
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Facilitar los espacios para las
+                        visitas del instructor.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Evaluar el desempeño técnico y
+                        actitudinal del aprendiz.</li>
+                    <li onclick="toggleCheck(this)"><i class="far fa-square"></i> Garantizar la seguridad social
+                        (ARL/EPS) según contrato.</li>
+                </ul>
+            </div>
         </section>
 
-        <footer class="footer">
+        <footer class="footer"
+            style="margin-top:5rem; text-align:center; padding:3rem; color:var(--text-muted); border-top:var(--border-soft);">
             <p>© 2025 - Portal Elite del Instructor SENA</p>
         </footer>
     </main>
 
-    <button id="btn-back-to-top" title="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- UI Components -->
+    <button id="btn-back-to-top" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+    <div id="ai-fab"><i class="fas fa-robot"></i></div>
+    <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+            <span><b>SENA_INST_BOT</b> Assistant</span>
+            <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="msg bot">Instructor, ¿necesita asesoría sobre el rol del Ente Coformador en Pasantías?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Pregunte sobre roles...">
+            <button id="chat-send" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script src="main_elite.js"></script>
 </body>
