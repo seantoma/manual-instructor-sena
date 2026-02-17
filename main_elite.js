@@ -1,4 +1,7 @@
-// --- SENA Portal Elite 2.0 - Instructor Assistant Logic ---
+/* 
+   SENA_INST_BOT v3.5 - The Theoretical Brain
+   Especialización en Guía 040, Acuerdo 009 y Procesos de Certificación (TyT)
+*/
 
 document.addEventListener('DOMContentLoaded', () => {
     initEliteComponents();
@@ -6,35 +9,111 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initEliteComponents() {
-    // Scroll to top button logic
     const btnBackToTop = document.getElementById('btn-back-to-top');
     if (btnBackToTop) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                btnBackToTop.style.display = "flex";
-            } else {
-                btnBackToTop.style.display = "none";
-            }
+            btnBackToTop.style.display = window.scrollY > 400 ? "flex" : "none";
         });
-
-        btnBackToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        btnBackToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
-
-    // Chatbot Initialization
     initInstBot();
 }
 
-// Checklist toggle with persistence
+function initInstBot() {
+    const fab = document.getElementById('ai-fab');
+    const win = document.getElementById('chat-window');
+    const close = document.getElementById('close-chat');
+    const send = document.getElementById('chat-send');
+    const input = document.getElementById('chat-input');
+    const body = document.getElementById('chat-body');
+
+    if (!fab || !win) return;
+
+    fab.addEventListener('click', () => win.classList.toggle('show'));
+    close.addEventListener('click', () => win.classList.remove('show'));
+
+    const addMsg = (text, sender) => {
+        const m = document.createElement('div');
+        m.className = `msg ${sender}`;
+        m.innerHTML = text;
+        body.appendChild(m);
+        body.scrollTop = body.scrollHeight;
+    };
+
+    const showTyping = () => {
+        const dot = document.createElement('div');
+        dot.className = 'msg bot typing';
+        dot.innerHTML = '<i class="fas fa-microchip fa-spin"></i> Procesando motor normativo v3.5...';
+        dot.id = 'typing-indicator';
+        body.appendChild(dot);
+        body.scrollTop = body.scrollHeight;
+    };
+
+    const processQuery = (q) => {
+        const query = q.toLowerCase();
+        showTyping();
+
+        setTimeout(() => {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+
+            let r = "Instructor, no reconozco ese término en los niveles locales. <b>¿Desea que realice una búsqueda en la red global del SENA?</b><br><br><a href='https://www.google.com/search?q=SENA+Guia+040+" + encodeURIComponent(query) + "' target='_blank' class='btn-mini' style='background:var(--sena-verde); color:white;'>Buscar en Red SENA</a>";
+
+            const intents = [
+                {
+                    keys: ['hola', 'bienvenido', 'saludo'],
+                    response: "Buen día, Instructor. Soy <b>SENA_INST_BOT v3.5</b>. Mi base de conocimientos ha sido fortalecida con la teoría íntegra de la <b>Guía 040</b> y el <b>Acuerdo 009 de 2024</b>. ¿Qué proceso técnico o normativo desea desglosar hoy?"
+                },
+                {
+                    keys: ['tyt', 'examen', 'prueba', 'presento'],
+                    response: "<b>Marco Normativo de Pruebas TyT:</b><br>Según la normativa institucional y los lineamientos de certificación, la presentación de las <b>Pruebas Saber TyT</b> es un **requisito obligatorio** para el proceso de certificación de los aprendices de nivel Tecnólogo.<br><br><b>¿Qué sucede si un aprendiz no las presenta?</b><br>1. <b>Bloqueo de Certificación:</b> El aprendiz no podrá optar al título hasta que presente la prueba en la siguiente convocatoria oficial del ICFES.<br>2. <b>Incumplimiento Administrativo:</b> El Centro de Formación no podrá registrar el cierre definitivo del programa.<br>3. <b>Excepción:</b> Solo causas de fuerza mayor debidamente documentadas pueden ser consideradas ante el Comité, pero la obligación de presentar la prueba persiste para el grado.<br><br><a href='https://www.icfes.gov.co/examenes-saber-tyt' target='_blank' style='color:var(--sena-verde)'>Ver fechas ICFES</a>"
+                },
+                {
+                    keys: ['momento', 'paso', 'etapa', 'fase'],
+                    response: "<b>Desglose de los 6 Momentos (Guía 040):</b><br>1. <b>Momento 1 (Preparación):</b> Socialización de la Etapa Productiva antes de terminar la lectiva.<br>2. <b>Momento 2 (Selección):</b> Registro de la alternativa en SofiaPlus.<br>3. <b>Momento 3 (Concertación):</b> Realización de la Visita 1. Definición del Plan de Trabajo (F023) en los primeros 15 días.<br>4. <b>Momento 4 (Seguimiento):</b> Ejecución y revisión de bitácoras (Visita 2 al mes 3).<br>5. <b>Momento 5 (Evaluación):</b> Visita 3 final. Emisión parcial del juicio.<br>6. <b>Momento 6 (Certificación):</b> Verificación documental final y Juicio Evaluativo Aprobado.<br><br><b>¿Desea profundizar en algún momento específico?</b>"
+                },
+                {
+                    keys: ['acuerdo 009', 'reglamento', 'sancion', 'comite'],
+                    response: "<b>Teoría del Acuerdo 009 de 2024 (Reglamento):</b><br>Este acuerdo redefine los deberes y prohibiciones. En Etapa Productiva, es fundamental:<br>• **Art. 22:** Obligación de mantener la vinculación vigente y reportar novedades.<br>• **Art. 25:** Trámite de novedades (Traslados, aplazamientos, retiros).<br>• **Inasistencia:** Si el aprendiz falta 3 días consecutivos sin justificar a la empresa, se inicia proceso de **Deserción**.<br>• **Comité de Evaluación:** Procedimiento administrativo para resolver faltas leves, graves o gravísimas detectadas durante la supervisión."
+                },
+                {
+                    keys: ['f023', 'f147', 'bitacora', 'formato'],
+                    response: "<b>Protocolo Técnico de Formatos:</b><br>1. <b>GFPI-F-023:</b> Es el instrumento de Planeación, Seguimiento y Evaluación. Se diligencia en 3 etapas. Verifique que las firmas coincidan con los representantes legales o jefes delegados.<br>2. <b>GFPI-F-147 (Bitácora):</b> Registro descriptivo de actividades. <br>• **Teoría:** Debe demostrar la aplicación de las competencias del perfil de salida.<br>• **Procedimiento:** El aprendiz entrega cada quincena, el instructor retroalimenta en máximo 5 días hábiles."
+                },
+                {
+                    keys: ['proceso', 'supervisión', 'instructor', 'visita'],
+                    response: "<b>El Proceso de Supervisión Técnica:</b><br>Como instructor, su rol trasciende lo administrativo; es un **Mentor Técnico**. <br><br><b>Pasos de Auditoría:</b><br>1. **Validación de Entorno:** Verificar que la empresa ofrezca condiciones de seguridad y salud (SST).<br>2. **Control de Evidencias:** No solo es recibir bitácoras, es auditar que lo que el aprendiz hace corresponda al programa.<br>3. **Verificación SofiaPlus:** El registro de inasistencias o novedades debe ser oportuno para evitar reprocesos en la certificación."
+                }
+            ];
+
+            let bestMatch = null;
+            let maxScore = 0;
+            intents.forEach(intent => {
+                let score = 0;
+                intent.keys.forEach(key => { if (query.includes(key)) score++; });
+                if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
+            });
+
+            if (bestMatch) r = bestMatch;
+            addMsg(r, 'bot');
+        }, 1200);
+    };
+
+    send.addEventListener('click', () => {
+        if (!input.value.trim()) return;
+        addMsg(input.value, 'user');
+        processQuery(input.value);
+        input.value = '';
+    });
+
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') send.click(); });
+}
+
+// Persistencia y Navegación
 function toggleCheck(item) {
     item.classList.toggle('checked');
     const icon = item.querySelector('i');
-    if (item.classList.contains('checked')) {
-        icon.className = 'fas fa-check-square';
-    } else {
-        icon.className = 'far fa-square';
-    }
+    icon.className = item.classList.contains('checked') ? 'fas fa-check-square' : 'far fa-square';
     saveChecklistState();
     updateProgress();
 }
@@ -63,117 +142,6 @@ function loadPersistentChecklists() {
         });
         updateProgress();
     }
-}
-
-/* 
-   SENA_INST_BOT v3.0 - Global Intelligence Suite
-   Simulates cloud connectivity and advanced technical searching.
-*/
-
-function initInstBot() {
-    const fab = document.getElementById('ai-fab');
-    const win = document.getElementById('chat-window');
-    const close = document.getElementById('close-chat');
-    const send = document.getElementById('chat-send');
-    const input = document.getElementById('chat-input');
-    const body = document.getElementById('chat-body');
-
-    if (!fab || !win) return;
-
-    fab.addEventListener('click', () => win.classList.toggle('show'));
-    close.addEventListener('click', () => win.classList.remove('show'));
-
-    const addMsg = (text, sender) => {
-        const m = document.createElement('div');
-        m.className = `msg ${sender}`;
-        m.innerHTML = text;
-        body.appendChild(m);
-        body.scrollTop = body.scrollHeight;
-    };
-
-    const showTyping = () => {
-        const dot = document.createElement('div');
-        dot.className = 'msg bot typing';
-        dot.innerHTML = '<i class="fas fa-network-wired fa-spin"></i> Consultando base de datos global...';
-        dot.id = 'typing-indicator';
-        body.appendChild(dot);
-        body.scrollTop = body.scrollHeight;
-    };
-
-    const processQuery = (q) => {
-        const query = q.toLowerCase();
-
-        // UI FEEDBACK
-        showTyping();
-
-        setTimeout(() => {
-            const indicator = document.getElementById('typing-indicator');
-            if (indicator) indicator.remove();
-
-            let r = `
-                <div style="border-left:2px solid #ef4444; padding-left:10px;">
-                    Instructor, este caso requiere <b>Sincronización Externa</b>. 
-                    No encuentro la respuesta exacta en la Guía 040 local. 
-                    <br><br>
-                    <b>Opciones de Red SENA:</b><br>
-                    <a href="https://senasofiaplus.edu.co/sofia-public/buscar-oferta.html?q=${encodeURIComponent(query)}" target="_blank" class="btn-mini" style="display:inline-block; background:#39A900; color:white; margin:5px 0;">Buscar en SofiaPlus</a><br>
-                    <a href="https://www.google.com/search?q=SENA+Guia+040+${encodeURIComponent(query)}+instructores" target="_blank" class="btn-mini" style="display:inline-block; background:var(--sena-azul); color:white;">Consultar en Google</a>
-                </div>
-            `;
-
-            const intents = [
-                {
-                    keys: ['hola', 'bienvenido', 'quien eres', 'asistente'],
-                    response: "Buen día, Instructor. Soy <b>SENA_INST_BOT v3.0</b>. He sincronizado con la red global del SENA para asistirle en auditoría, normativa y procesos técnicos. ¿Qué modulo desea consultar?"
-                },
-                {
-                    keys: ['bitacora', 'f147', 'reporte', 'seguimiento'],
-                    response: "<b>Módulo de Bitácoras (Nube SENA):</b><br>Las bitácoras deben subirse quincenalmente. Usted como instructor debe:<br>1. Validar cronología.<br>2. Firmar digitalmente.<br>3. <a href='https://zendsena.zendesk.com/hc/es-419' target='_blank' style='color:var(--sena-verde)'>Ver manual de cargue en Zendesk</a>."
-                },
-                {
-                    keys: ['f023', 'concertación', 'visita', 'planeación'],
-                    response: "<b>Protocolo F023 (Global):</b><br>Se han detectado 3 hitos vitales. El formato debe ser cargado al drive institucional tras cada visita. Si tiene problemas con el formato excel, puede <a href='https://portal.misena.edu.co/' target='_blank'>acceder a SharePoint aquí</a>."
-                },
-                {
-                    keys: ['normativa', 'ley', 'acuerdo', 'reglamento', '009'],
-                    response: "<b>Sincronización con Acuerdo 009 de 2024:</b><br>El nuevo reglamento del aprendiz establece protocolos estrictos para el seguimiento. Consulte el Cap. V sobre Derechos y Deberes en Etapa Productiva. <a href='fundamentos.html' style='color:var(--sena-verde)'>Abrir visor normativo</a>."
-                },
-                {
-                    keys: ['sofia', 'plataforma', 'juicio', 'calificación'],
-                    response: "<b>Conectado a SofiaPlus:</b><br>El juicio evaluativo solo debe emitirse cuando el portafolio esté al 100%. <br><a href='https://senasofiaplus.edu.co/' target='_blank' class='btn-mini' style='background:#39A900; color:white; padding:5px; border-radius:4px; text-decoration:none;'>Ir a SofiaPlus</a>"
-                }
-            ];
-
-            let bestMatch = null;
-            let maxScore = 0;
-            intents.forEach(intent => {
-                let score = 0;
-                intent.keys.forEach(key => { if (query.includes(key)) score++; });
-                if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
-            });
-
-            if (bestMatch) r = bestMatch;
-            addMsg(r, 'bot');
-        }, 1200); // Simulate "Internet search" delay
-    };
-
-    send.addEventListener('click', () => {
-        if (!input.value.trim()) return;
-        addMsg(input.value, 'user');
-        processQuery(input.value);
-        input.value = '';
-    });
-
-    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') send.click(); });
-}
-
-document.addEventListener('DOMContentLoaded', initInstBot);
-
-// Legacy helpers (Accordions)
-function toggleAccordion(header) {
-    const content = header.nextElementSibling;
-    header.classList.toggle('active');
-    content.classList.toggle('show');
 }
 
 function updateProgress() {
