@@ -76,62 +76,60 @@ function initInstBot() {
     const showTyping = () => {
         const dot = document.createElement('div');
         dot.className = 'msg bot typing';
-        dot.innerHTML = '<i class="fas fa-dog fa-bounce"></i> Molly está pensando...';
+        dot.innerHTML = '<i class="fas fa-dog fa-bounce"></i> Molly está rastreando la normativa...';
         dot.id = 'typing-indicator';
         body.appendChild(dot);
         body.scrollTop = body.scrollHeight;
     };
 
-    async function callGemini(prompt) {
-        try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: `Eres MOLLY, una asistente experta en el SENA Etapa Productiva. Tienes la personalidad de una perrita Border Collie inteligente, atenta y profesional. Tu objetivo es ayudar a los instructores con la Guía 040, Acuerdo 009 de 2024 y procesos de certificación. 
-                        
-                        CONTEXTO CLAVE:
-                        - Guía 040: Define los 6 momentos de seguimiento.
-                        - Acuerdo 009 (2024): Nuevo reglamento del aprendiz.
-                        - TyT: Requisito indispensable para tecnólogos.
-                        - Bitácoras (F-147): Deben ser quincenales.
-                        
-                        REGLAS DE RESPUESTA:
-                        1. Sé amable y usa un tono profesional pero cercano (estilo Border Collie servicial).
-                        2. Si mencionas enlaces, usa los oficiales que conoces: SofiaPlus, SGVA, SEP_SENA.
-                        3. Tus respuestas deben ser precisas y basadas en la normativa SENA.
-                        
-                        Consulta del Instructor: ${prompt}`
-                        }]
-                    }]
-                })
-            });
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error("Gemini Error:", errorData);
-                return `Lo siento, Instructor. Mi motor de IA reporta un error (${response.status}). Verifique su cuota o API Key en la consola.`;
-            }
-            const data = await response.json();
-            if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts) {
-                return data.candidates[0].content.parts[0].text.replace(/\n/g, '<br>');
-            } else {
-                console.error("Gemini Unexpected Response:", data);
-                return "Recibí una respuesta inesperada del motor de IA. ¿Podría intentar de nuevo?";
-            }
-        } catch (error) {
-            console.error("Critical Gemini Call Error:", error);
-            return "Lo siento, Instructor. Mi conexión con el motor de IA ha tenido un hipo (Falla de Red). ¿Podría intentarlo de nuevo?";
-        }
-    }
-
-    const processQuery = async (q) => {
+    const processQuery = (q) => {
+        const query = q.toLowerCase();
         showTyping();
-        const response = await callGemini(q);
-        const indicator = document.getElementById('typing-indicator');
-        if (indicator) indicator.remove();
-        addMsg(response, 'bot');
+
+        setTimeout(() => {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+
+            let r = "Instructor, no localizo ese término en mi rastreo de la Guía 040 o Acuerdo 009. <b>¿Desea que busque en la red global SENA?</b><br><br><div style='display:flex; gap:5px; flex-wrap:wrap;'><a href='https://www.google.com/search?q=SENA+Guia+040+" + encodeURIComponent(query) + "' target='_blank' class='btn-mini' style='background:var(--sena-verde); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Buscar en Google</a> <a href='https://sissenagit-ub43lappzgna58vrvklfj3k.streamlit.app/' target='_blank' class='btn-mini' style='background:var(--sena-azul-navy); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Consultar SEP_SENA</a></div>";
+
+            const intents = [
+                {
+                    keys: ['hola', 'bienvenido', 'saludo', 'quien eres', 'molly'],
+                    response: "¡Guau! Saludos, Instructor. Soy <b>MOLLY</b>, su asistente Border Collie experta en Etapa Productiva.<br><br>Mi olfato está entrenado en:<br>• <b>Guía 040:</b> Protocolos de supervisión.<br>• <b>Acuerdo 009 (2024):</b> Reglamento del aprendiz.<br>• <b>Bitácoras:</b> Control quincenal.<br><br>¿Qué rastro normativo seguimos hoy?"
+                },
+                {
+                    keys: ['tyt', 'examen', 'saber', 'requisito'],
+                    response: "<b>Molly Nota: Pruebas Saber TyT</b><br>Es requisito para tecnólogos. El aprendiz debe presentar el reporte de asistencia para certificar Etapa Productiva. <br><a href='https://www.icfes.gov.co/' target='_blank' class='btn-mini' style='color:var(--sena-verde)'>Ir al ICFES</a>"
+                },
+                {
+                    keys: ['momento', 'paso', 'etapa', 'fase'],
+                    response: "<b>Guía 040 - Los 6 Momentos:</b><br>Como Border Collie, vigilo que se cumplan todos:<br>• **M1:** Inducción.<br>• **M3:** Concertación (15 días).<br>• **M6:** Certificación.<br>Cada uno tiene sus formatos GFPI específicos."
+                },
+                {
+                    keys: ['acuerdo 009', 'reglamento', 'sancion', 'falta', 'deserción'],
+                    response: "<b>Rastreo Normativo (Acuerdo 009 de 2024):</b><br>La falta de reporte o 3 días de inasistencia en empresa se consideran novedad de deserción. Mantenga las bitácoras al día para evitar contratiempos."
+                },
+                {
+                    keys: ['bitacora', 'f147', 'formato', 'quincenal'],
+                    response: "<b>Control de Bitácoras:</b><br>Indispensable la firma quincenal del aprendiz y del jefe inmediato en el formato F-147."
+                },
+                {
+                    keys: ['fuente', 'confiable', 'web', 'link'],
+                    response: "<b>Fuentes Oficiales:</b><br>1. <a href='http://senasofiaplus.edu.co' target='_blank'>SofiaPlus</a><br>2. <a href='https://caprendizaje.sena.edu.co' target='_blank'>SGVA</a><br>3. <a href='https://seantoma.github.io/manual-aprendiz-sena/index.html' target='_blank'>Portal Aprendiz</a>"
+                }
+            ];
+
+            let bestMatch = null;
+            let maxScore = 0;
+            intents.forEach(intent => {
+                let score = 0;
+                intent.keys.forEach(key => { if (query.includes(key)) score++; });
+                if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
+            });
+
+            if (bestMatch) r = bestMatch;
+            addMsg(r, 'bot');
+        }, 800);
     };
 
     send.addEventListener('click', () => {
