@@ -30,30 +30,35 @@
     </nav>
 
     <main class="main-wrapper">
-        <header class="hero">
+        <header class="hero" style="animation: slideDown 0.8s ease-out;">
             <div class="hero-text">
-                <div class="hero-meta">Entorno Profesional de Instrucción</div>
-                <h1>Gestión Estratégica EP</h1>
-                <p>Bienvenido al Centro de Control del Instructor. Aquí encontrará la lógica segmentada para el
-                    cumplimiento normativo de la Guía GFPI-G-040 y el Acuerdo 009 de 2024.</p>
-                <div class="hero-actions" style="margin-top:2rem; display:flex; gap:1rem;">
-                    <a href="momentos.html" class="btn-back-to-top"
-                        style="display:flex; position:static; width:auto; height:auto; padding:0.8rem 1.5rem; background:var(--sena-verde); color:white; border-radius:10px; text-decoration:none; font-weight:700;">Iniciar
-                        Seguimiento</a>
+                <div class="hero-meta" style="letter-spacing:5px; color:var(--sena-verde);">SISTEMA ELITE DE INSTRUCCIÓN
+                </div>
+                <h1 style="font-size:3.5rem; text-shadow: 0 10px 20px rgba(0,0,0,0.2);">Portal del Instructor <span
+                        style="color:var(--sena-verde);">v3.0</span></h1>
+                <p style="font-size:1.2rem; opacity:0.9;">Gestión integrada con el Portal del Aprendiz. Conexión global
+                    a normativa, plazos y auditoría técnica de alto rendimiento.</p>
+                <div class="hero-actions" style="margin-top:2.5rem; display:flex; gap:1.5rem;">
+                    <a href="guia_master.html" class="btn-portal btn-fill"
+                        style="padding:1rem 2rem; border-radius:50px; font-weight:800; box-shadow: 0 10px 20px rgba(57,169,0,0.3);">Explorar
+                        Guía Master</a>
+                    <a href="formatos.html" class="btn-portal btn-outline"
+                        style="padding:1rem 2rem; border-radius:50px; font-weight:800;">Repositorio Digital</a>
                 </div>
             </div>
-
-            <div class="bookings-card">
-                <h3 style="margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:0.5rem;">
-                    Sincronización MS Bookings</h3>
-                <p style="font-size:0.85rem; margin-bottom:1.5rem;">Optimice su agenda de visitas técnicas permitiendo
-                    el agendamiento autónomo de sus aprendices.</p>
+            <div class="bookings-card"
+                style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); animation: fadeIn 1.2s ease-out;">
+                <h3
+                    style="color:white; margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.3); padding-bottom:0.5rem; font-family:'Montserrat';">
+                    <i class="fas fa-satellite-dish" style="color:var(--sena-verde);"></i> Red SENA Conectada
+                </h3>
+                <p style="color:white; font-size:0.85rem; margin-bottom:1.5rem; opacity:0.8;">Acceda a MS Bookings y
+                    herramientas de sincronización en tiempo real.</p>
                 <a href="https://outlook.office.com/book/ReservasEtapaProductivaCSF@sena.edu.co/" target="_blank"
                     rel="noopener"
-                    style="display:block; text-align:center; padding:0.8rem; background:white; color:var(--sena-azul-navy); border-radius:8px; text-decoration:none; font-weight:800; transition:0.3s;"
-                    onmouseover="this.style.background='var(--sena-verde)'; this.style.color='white'"
-                    onmouseout="this.style.background='white'; this.style.color='var(--sena-azul-navy)'">Gestionar
-                    Agenda</a>
+                    style="display:block; text-align:center; padding:1rem; background:var(--sena-verde); color:white; border-radius:12px; text-decoration:none; font-weight:800; transition:0.3s; transform: scale(1);"
+                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px var(--sena-verde)'"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">Sincronizar Agenda</a>
             </div>
         </header>
 

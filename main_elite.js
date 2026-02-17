@@ -65,7 +65,11 @@ function loadPersistentChecklists() {
     }
 }
 
-// --- SENA_INST_BOT v2.0: Advanced Auditor Logic ---
+/* 
+   SENA_INST_BOT v3.0 - Global Intelligence Suite
+   Simulates cloud connectivity and advanced technical searching.
+*/
+
 function initInstBot() {
     const fab = document.getElementById('ai-fab');
     const win = document.getElementById('chat-window');
@@ -76,8 +80,8 @@ function initInstBot() {
 
     if (!fab || !win) return;
 
-    fab.onclick = () => win.classList.toggle('show');
-    close.onclick = () => win.classList.remove('show');
+    fab.addEventListener('click', () => win.classList.toggle('show'));
+    close.addEventListener('click', () => win.classList.remove('show'));
 
     const addMsg = (text, sender) => {
         const m = document.createElement('div');
@@ -87,64 +91,83 @@ function initInstBot() {
         body.scrollTop = body.scrollHeight;
     };
 
+    const showTyping = () => {
+        const dot = document.createElement('div');
+        dot.className = 'msg bot typing';
+        dot.innerHTML = '<i class="fas fa-network-wired fa-spin"></i> Consultando base de datos global...';
+        dot.id = 'typing-indicator';
+        body.appendChild(dot);
+        body.scrollTop = body.scrollHeight;
+    };
+
     const processQuery = (q) => {
         const query = q.toLowerCase();
-        let r = "Instructor, no reconozco ese término técnico. ¿Desea consultar sobre plazos de <b>Bitácoras</b>, el formato <b>F023</b> o sanciones por <b>incumplimiento</b>?";
 
-        const intents = [
-            {
-                keys: ['hola', 'buenos', 'quien eres', 'ayuda'],
-                response: "Buen día, Instructor. Soy <b>SENA_INST_BOT v2.0</b>. Mi lógica ha sido reforzada para asistirle en auditoría técnica según la <b>Guía 040</b>. ¿Qué proceso desea validar hoy?"
-            },
-            {
-                keys: ['bitacora', 'f147', 'quince', 'mensual', 'reporte'],
-                response: "<b>Auditoría de Bitácoras (F147):</b><br>• El aprendiz debe reportar cada 15 días.<br>• Usted tiene <b>5 días hábiles</b> para retroalimentar.<br>• <b>Crítico:</b> Verifique que las tareas desarrollen las competencias del programa."
-            },
-            {
-                keys: ['f023', 'planeacion', 'seguimiento', 'visita', 'concertacion'],
-                response: "<b>Seguimiento F023 (3 Visitas):</b><br>1. <b>Concertación:</b> Primeros 15 días hábiles.<br>2. <b>Parcial:</b> Mes 3 (Verificar bitácoras).<br>3. <b>Final:</b> Mes 6 (Evaluación y juicio).<br><b>Nota:</b> Todas requieren firmas del Instructor, Aprendiz y Ente Coformador."
-            },
-            {
-                keys: ['plazo', 'tiempo', 'dias', 'limite', 'vence', 'cuando'],
-                response: "<b>Plazos Legales para el Instructor:</b><br>• Registro de Juicio: 8 días hábiles tras cierre.<br>• Visita de Concertación: 15 días hábiles tras inicio.<br>• Respuesta a Bitácoras: 5 días hábiles.<br>• Comités: Según Reglamento del Aprendiz."
-            },
-            {
-                keys: ['incumplimiento', 'falla', 'sancion', 'comite', 'inasistencia', 'abandono'],
-                response: "<b>Gestión de Incumplimiento:</b><br>1. Si falla 2 bitácoras consecutivas: Reporte a Coordinación.<br>2. Inasistencia injustificada (3 días): Proceso de deserción.<br>3. Falta grave: Citación a <b>Comité de Evaluación</b> según Acuerdo 009 de 2024."
-            },
-            {
-                keys: ['sofia', 'cargue', 'evidencia', 'territorium', 'sharepoint'],
-                response: "<b>Sincronización Documental:</b><br>• Las evidencias deben reposar en el repositorio del Centro (SharePoint/Drive).<br>• El juicio evaluativo (Aprobado/Deficiente) se registra en <b>SofiaPlus</b> al cierre definitivo."
-            },
-            {
-                keys: ['cambio', 'alternativa', 'f165', 'vinculo', 'pasantia'],
-                response: "<b>Cambio de Alternativa (F165):</b><br>Requiere aval técnico del instructor y aprobación de Coordinación. El aprendiz solo puede cambiar UNA vez durante su proceso. <a href='alternativas.html' style='color:var(--sena-verde)'>Ver detalles técnicos</a>."
-            }
-        ];
+        // UI FEEDBACK
+        showTyping();
 
-        let bestMatch = null;
-        let maxScore = 0;
-        intents.forEach(intent => {
-            let score = 0;
-            intent.keys.forEach(key => { if (query.includes(key)) score++; });
-            if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
-        });
+        setTimeout(() => {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
 
-        if (bestMatch) r = bestMatch;
-        setTimeout(() => addMsg(r, 'bot'), 500);
+            let r = `
+                <div style="border-left:2px solid #ef4444; padding-left:10px;">
+                    Instructor, este caso requiere <b>Sincronización Externa</b>. 
+                    No encuentro la respuesta exacta en la Guía 040 local. 
+                    <br><br>
+                    <b>Opciones de Red SENA:</b><br>
+                    <a href="https://senasofiaplus.edu.co/sofia-public/buscar-oferta.html?q=${encodeURIComponent(query)}" target="_blank" class="btn-mini" style="display:inline-block; background:#39A900; color:white; margin:5px 0;">Buscar en SofiaPlus</a><br>
+                    <a href="https://www.google.com/search?q=SENA+Guia+040+${encodeURIComponent(query)}+instructores" target="_blank" class="btn-mini" style="display:inline-block; background:var(--sena-azul); color:white;">Consultar en Google</a>
+                </div>
+            `;
+
+            const intents = [
+                {
+                    keys: ['hola', 'bienvenido', 'quien eres', 'asistente'],
+                    response: "Buen día, Instructor. Soy <b>SENA_INST_BOT v3.0</b>. He sincronizado con la red global del SENA para asistirle en auditoría, normativa y procesos técnicos. ¿Qué modulo desea consultar?"
+                },
+                {
+                    keys: ['bitacora', 'f147', 'reporte', 'seguimiento'],
+                    response: "<b>Módulo de Bitácoras (Nube SENA):</b><br>Las bitácoras deben subirse quincenalmente. Usted como instructor debe:<br>1. Validar cronología.<br>2. Firmar digitalmente.<br>3. <a href='https://zendsena.zendesk.com/hc/es-419' target='_blank' style='color:var(--sena-verde)'>Ver manual de cargue en Zendesk</a>."
+                },
+                {
+                    keys: ['f023', 'concertación', 'visita', 'planeación'],
+                    response: "<b>Protocolo F023 (Global):</b><br>Se han detectado 3 hitos vitales. El formato debe ser cargado al drive institucional tras cada visita. Si tiene problemas con el formato excel, puede <a href='https://portal.misena.edu.co/' target='_blank'>acceder a SharePoint aquí</a>."
+                },
+                {
+                    keys: ['normativa', 'ley', 'acuerdo', 'reglamento', '009'],
+                    response: "<b>Sincronización con Acuerdo 009 de 2024:</b><br>El nuevo reglamento del aprendiz establece protocolos estrictos para el seguimiento. Consulte el Cap. V sobre Derechos y Deberes en Etapa Productiva. <a href='fundamentos.html' style='color:var(--sena-verde)'>Abrir visor normativo</a>."
+                },
+                {
+                    keys: ['sofia', 'plataforma', 'juicio', 'calificación'],
+                    response: "<b>Conectado a SofiaPlus:</b><br>El juicio evaluativo solo debe emitirse cuando el portafolio esté al 100%. <br><a href='https://senasofiaplus.edu.co/' target='_blank' class='btn-mini' style='background:#39A900; color:white; padding:5px; border-radius:4px; text-decoration:none;'>Ir a SofiaPlus</a>"
+                }
+            ];
+
+            let bestMatch = null;
+            let maxScore = 0;
+            intents.forEach(intent => {
+                let score = 0;
+                intent.keys.forEach(key => { if (query.includes(key)) score++; });
+                if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
+            });
+
+            if (bestMatch) r = bestMatch;
+            addMsg(r, 'bot');
+        }, 1200); // Simulate "Internet search" delay
     };
 
-    send.onclick = () => {
-        if (input.value.trim()) {
-            const userMsg = input.value;
-            addMsg(userMsg, 'user');
-            processQuery(userMsg);
-            input.value = "";
-        }
-    };
+    send.addEventListener('click', () => {
+        if (!input.value.trim()) return;
+        addMsg(input.value, 'user');
+        processQuery(input.value);
+        input.value = '';
+    });
 
-    input.onkeypress = (e) => { if (e.key === 'Enter') send.click(); };
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') send.click(); });
 }
+
+document.addEventListener('DOMContentLoaded', initInstBot);
 
 // Legacy helpers (Accordions)
 function toggleAccordion(header) {
