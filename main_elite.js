@@ -91,22 +91,15 @@ function initInstBot() {
         console.warn('Could not load chat history:', e);
     }
 
-    // Initialize Gemini model
-    let geminiModel = null;
-    let modelInitialized = false;
+    // Gemini REST API endpoint
+    const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
-    async function initGeminiModel() {
-        if (modelInitialized) return true;
-
+    async function callGeminiAPI(userMessage) {
         try {
             // Extract documentation context
             const docContext = MOLLY_CONTEXT.extractPageContext();
 
-            // Configure Gemini
-            const { GoogleGenerativeAI } = await import('https://esm.run/@google/generative-ai');
-            const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-
-            // System instruction for MOLLY
+            // Build system instruction
             const systemInstruction = `Eres MOLLY (🐶), la Border Collie asistente del instructor SENA para la Etapa Productiva.
 
 TU PERSONALIDAD:
@@ -129,54 +122,85 @@ FORMATO DE RESPUESTA:
 - Termina con un consejo o recomendación práctica
 
 CONTEXTO DE DOCUMENTACIÓN:
-${docContext}
+${docContext.substring(0, 15000)}
 
 RECUERDA: Nunca inventes información. Si no sabes algo, admítelo y sugiere dónde buscar.`;
 
-            geminiModel = genAI.getGenerativeModel({
-                model: "gemini-1.5-flash",
-                systemInstruction: systemInstruction
+            // Build contents array
+            const contents = [];
+
+            // Add system instruction
+            contents.push({
+                role: "user",
+                parts: [{ text: systemInstruction }]
+            });
+            contents.push({
+                role: "model",
+                parts: [{ text: "Entendido. Soy MOLLY, tu asistente Border Collie. Estoy lista para ayudarte." }]
             });
 
-            modelInitialized = true;
-            return true;
+            // Add recent chat history (last 4 messages)
+            const recentHistory = chatHistory.slice(-4);
+            for (const msg of recentHistory) {
+                contents.push({
+                    role: msg.role === 'user' ? 'user' : 'model',
+                    parts: [{ text: msg.content }]
+                });
+            }
+
+            // Add current message
+            contents.push({
+                role: "user",
+                parts: [{ text: userMessage }]
+            });
+
+            // Call API
+            const response = await fetch(GEMINI_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: contents,
+                    generationConfig: {
+                        temperature: 0.7,
+                        topK: 40,
+                        topP: 0.95,
+                        maxOutputTokens: 2048
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('API Error Response:', errorText);
+                throw new Error(`API Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+                console.error('Invalid API response:', data);
+                throw new Error('Respuesta inválida de la API');
+            }
+
+            return data.candidates[0].content.parts[0].text;
+
         } catch (error) {
-            console.error('Error initializing Gemini:', error);
-            return false;
+            console.error('Gemini API Error:', error);
+            throw error;
         }
     }
 
     const processQuery = async (q) => {
         const query = q.trim();
+        if (!query) return;
+
         showTyping();
 
-        // Initialize model if needed
-        const initialized = await initGeminiModel();
-
-        if (!initialized) {
-            setTimeout(() => {
-                const indicator = document.getElementById('typing-indicator');
-                if (indicator) indicator.remove();
-                addMsg("❌ No pude conectarme al sistema de IA. Por favor, verifica tu conexión e intenta nuevamente.", 'bot');
-            }, 1000);
-            return;
-        }
-
         try {
-            // Build chat history for Gemini (last 6 messages for context)
-            const geminiHistory = chatHistory.slice(-6).map(msg => ({
-                role: msg.role === 'user' ? 'user' : 'model',
-                parts: [{ text: msg.content }]
-            }));
-
-            // Start chat with history
-            const chat = geminiModel.startChat({
-                history: geminiHistory
-            });
-
-            // Send message
-            const result = await chat.sendMessage(query);
-            const response = result.response.text();
+            // Call Gemini API
+            const response = await callGeminiAPI(query);
 
             // Remove typing indicator
             const indicator = document.getElementById('typing-indicator');
@@ -208,10 +232,13 @@ RECUERDA: Nunca inventes información. Si no sabes algo, admítelo y sugiere dó
 
             let errorMsg = "❌ Ocurrió un error al procesar tu consulta. ";
 
-            if (error.message && error.message.includes('quota')) {
+            const errorStr = error.toString().toLowerCase();
+            if (errorStr.includes('quota') || errorStr.includes('429')) {
                 errorMsg += "Se ha excedido la cuota de la API. Por favor, intenta más tarde.";
-            } else if (error.message && error.message.includes('API key')) {
+            } else if (errorStr.includes('api') || errorStr.includes('key')) {
                 errorMsg += "Hay un problema con la configuración de la API.";
+            } else if (errorStr.includes('network') || errorStr.includes('fetch')) {
+                errorMsg += "No se pudo conectar al servicio. Verifica tu conexión a internet.";
             } else {
                 errorMsg += "Por favor, intenta nuevamente.";
             }
