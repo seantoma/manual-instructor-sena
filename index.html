@@ -50,28 +50,7 @@
             animation: fadeIn 1.2s ease-out;
         }
 
-        .qr-frame {
-            position: relative;
-            padding: 24px;
-            background: white;
-            border: 1px solid var(--border-soft);
-            border-radius: 30px;
-            box-shadow: var(--shadow-elite);
-            margin-bottom: 2rem;
-            transition: all 0.5s ease;
-        }
 
-        .qr-frame:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .qr-frame img {
-            width: 200px;
-            height: 200px;
-            border-radius: 15px;
-            display: block;
-        }
 
         .dashboard-container {
             max-width: 1200px;
@@ -256,14 +235,7 @@
         <p>Entorno Profesional de Instrucción SENA</p>
     </header>
 
-    <section class="hero-section">
-        <div class="qr-frame">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://seantoma.github.io/manual-instructor-sena/"
-                alt="Instructor Portal QR">
-        </div>
-        <div class="hero-meta" style="color:var(--sena-verde); font-weight:700; letter-spacing:2px;">AUDITORÍA TÉCNICA
-            ACTIVA</div>
-    </section>
+
 
     <main class="dashboard-container">
         <!-- Manual -->
@@ -350,6 +322,7 @@
         </div>
     </div>
 
+    <script src="molly_context.js"></script>
     <script src="main_elite.js"></script>
     <script>
         // Update current date for parity with apprentice

@@ -82,54 +82,142 @@ function initInstBot() {
         body.scrollTop = body.scrollHeight;
     };
 
-    const processQuery = (q) => {
-        const query = q.toLowerCase();
+    // Initialize chat history from localStorage
+    let chatHistory = [];
+    try {
+        const saved = localStorage.getItem('molly_chat_history');
+        if (saved) chatHistory = JSON.parse(saved);
+    } catch (e) {
+        console.warn('Could not load chat history:', e);
+    }
+
+    // Initialize Gemini model
+    let geminiModel = null;
+    let modelInitialized = false;
+
+    async function initGeminiModel() {
+        if (modelInitialized) return true;
+
+        try {
+            // Extract documentation context
+            const docContext = MOLLY_CONTEXT.extractPageContext();
+
+            // Configure Gemini
+            const { GoogleGenerativeAI } = await import('https://esm.run/@google/generative-ai');
+            const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+
+            // System instruction for MOLLY
+            const systemInstruction = `Eres MOLLY (🐶), la Border Collie asistente del instructor SENA para la Etapa Productiva.
+
+TU PERSONALIDAD:
+- Eres una Border Collie inteligente, leal y meticulosa
+- Usas metáforas de pastoreo cuando es apropiado ("rastrear", "vigilar", "supervisar")
+- Eres profesional pero amigable
+- Priorizas la precisión y el cumplimiento normativo
+
+TU MISIÓN:
+1. PRIORIZAR DOCUMENTACIÓN INTERNA: Responde basándote en el contexto del manual del instructor
+2. SER ESPECÍFICA: Cita números de formatos (F-147, F-023), artículos del Acuerdo 009, momentos de la Guía 040
+3. DAR RESPUESTAS EXTENDIDAS: No seas breve. Explica el contexto, los plazos, las consecuencias
+4. ALERTAR SOBRE RIESGOS: Menciona hallazgos de auditoría, plazos críticos, errores comunes
+5. SOLO COMO ÚLTIMO RECURSO: Si no encuentras la respuesta en tu documentación, sugiere búsqueda externa
+
+FORMATO DE RESPUESTA:
+- Usa HTML para formato (negrita con <b>, saltos con <br>, listas)
+- Estructura tus respuestas con secciones claras
+- Incluye ejemplos prácticos cuando sea relevante
+- Termina con un consejo o recomendación práctica
+
+CONTEXTO DE DOCUMENTACIÓN:
+${docContext}
+
+RECUERDA: Nunca inventes información. Si no sabes algo, admítelo y sugiere dónde buscar.`;
+
+            geminiModel = genAI.getGenerativeModel({
+                model: "gemini-1.5-flash",
+                systemInstruction: systemInstruction
+            });
+
+            modelInitialized = true;
+            return true;
+        } catch (error) {
+            console.error('Error initializing Gemini:', error);
+            return false;
+        }
+    }
+
+    const processQuery = async (q) => {
+        const query = q.trim();
         showTyping();
 
-        setTimeout(() => {
+        // Initialize model if needed
+        const initialized = await initGeminiModel();
+
+        if (!initialized) {
+            setTimeout(() => {
+                const indicator = document.getElementById('typing-indicator');
+                if (indicator) indicator.remove();
+                addMsg("❌ No pude conectarme al sistema de IA. Por favor, verifica tu conexión e intenta nuevamente.", 'bot');
+            }, 1000);
+            return;
+        }
+
+        try {
+            // Build chat history for Gemini (last 6 messages for context)
+            const geminiHistory = chatHistory.slice(-6).map(msg => ({
+                role: msg.role === 'user' ? 'user' : 'model',
+                parts: [{ text: msg.content }]
+            }));
+
+            // Start chat with history
+            const chat = geminiModel.startChat({
+                history: geminiHistory
+            });
+
+            // Send message
+            const result = await chat.sendMessage(query);
+            const response = result.response.text();
+
+            // Remove typing indicator
             const indicator = document.getElementById('typing-indicator');
             if (indicator) indicator.remove();
 
-            let r = "Instructor, no localizo ese término en mi rastreo de la Guía 040 o Acuerdo 009. <b>¿Desea que busque en la red global SENA?</b><br><br><div style='display:flex; gap:5px; flex-wrap:wrap;'><a href='https://www.google.com/search?q=SENA+Guia+040+" + encodeURIComponent(query) + "' target='_blank' class='btn-mini' style='background:var(--sena-verde); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Buscar en Google</a> <a href='https://sissenagit-ub43lappzgna58vrvklfj3k.streamlit.app/' target='_blank' class='btn-mini' style='background:var(--sena-azul-navy); color:white; padding:5px 10px; border-radius:5px; text-decoration:none; font-size:0.7rem;'>Consultar SEP_SENA</a></div>";
+            // Add response
+            addMsg(response, 'bot');
 
-            const intents = [
-                {
-                    keys: ['hola', 'bienvenido', 'saludo', 'quien eres', 'molly'],
-                    response: "¡Guau! Saludos, Instructor. Soy <b>MOLLY</b>, su asistente Border Collie experta en Etapa Productiva.<br><br>Mi olfato está entrenado en:<br>• <b>Guía 040:</b> Protocolos de supervisión.<br>• <b>Acuerdo 009 (2024):</b> Reglamento del aprendiz.<br>• <b>Bitácoras:</b> Control quincenal.<br><br>¿Qué rastro normativo seguimos hoy?"
-                },
-                {
-                    keys: ['tyt', 'examen', 'saber', 'requisito'],
-                    response: "<b>Molly Nota: Pruebas Saber TyT</b><br>Es requisito para tecnólogos. El aprendiz debe presentar el reporte de asistencia para certificar Etapa Productiva. <br><a href='https://www.icfes.gov.co/' target='_blank' class='btn-mini' style='color:var(--sena-verde)'>Ir al ICFES</a>"
-                },
-                {
-                    keys: ['momento', 'paso', 'etapa', 'fase'],
-                    response: "<b>Guía 040 - Los 6 Momentos:</b><br>Como Border Collie, vigilo que se cumplan todos:<br>• **M1:** Inducción.<br>• **M3:** Concertación (15 días).<br>• **M6:** Certificación.<br>Cada uno tiene sus formatos GFPI específicos."
-                },
-                {
-                    keys: ['acuerdo 009', 'reglamento', 'sancion', 'falta', 'deserción'],
-                    response: "<b>Rastreo Normativo (Acuerdo 009 de 2024):</b><br>La falta de reporte o 3 días de inasistencia en empresa se consideran novedad de deserción. Mantenga las bitácoras al día para evitar contratiempos."
-                },
-                {
-                    keys: ['bitacora', 'f147', 'formato', 'quincenal'],
-                    response: "<b>Control de Bitácoras:</b><br>Indispensable la firma quincenal del aprendiz y del jefe inmediato en el formato F-147."
-                },
-                {
-                    keys: ['fuente', 'confiable', 'web', 'link'],
-                    response: "<b>Fuentes Oficiales:</b><br>1. <a href='http://senasofiaplus.edu.co' target='_blank'>SofiaPlus</a><br>2. <a href='https://caprendizaje.sena.edu.co' target='_blank'>SGVA</a><br>3. <a href='https://seantoma.github.io/manual-aprendiz-sena/index.html' target='_blank'>Portal Aprendiz</a>"
-                }
-            ];
+            // Save to history
+            chatHistory.push({ role: 'user', content: query });
+            chatHistory.push({ role: 'assistant', content: response });
 
-            let bestMatch = null;
-            let maxScore = 0;
-            intents.forEach(intent => {
-                let score = 0;
-                intent.keys.forEach(key => { if (query.includes(key)) score++; });
-                if (score > maxScore) { maxScore = score; bestMatch = intent.response; }
-            });
+            // Keep only last 20 messages
+            if (chatHistory.length > 20) {
+                chatHistory = chatHistory.slice(-20);
+            }
 
-            if (bestMatch) r = bestMatch;
-            addMsg(r, 'bot');
-        }, 800);
+            // Save to localStorage
+            try {
+                localStorage.setItem('molly_chat_history', JSON.stringify(chatHistory));
+            } catch (e) {
+                console.warn('Could not save chat history:', e);
+            }
+
+        } catch (error) {
+            console.error('Error getting response:', error);
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+
+            let errorMsg = "❌ Ocurrió un error al procesar tu consulta. ";
+
+            if (error.message && error.message.includes('quota')) {
+                errorMsg += "Se ha excedido la cuota de la API. Por favor, intenta más tarde.";
+            } else if (error.message && error.message.includes('API key')) {
+                errorMsg += "Hay un problema con la configuración de la API.";
+            } else {
+                errorMsg += "Por favor, intenta nuevamente.";
+            }
+
+            addMsg(errorMsg, 'bot');
+        }
     };
 
     send.addEventListener('click', () => {
