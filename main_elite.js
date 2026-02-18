@@ -31,7 +31,7 @@ function initInstBot() {
     if (!fab || !win) return;
 
     // Molly Rebranding - Icono Border Collie simbólico
-    fab.innerHTML = '<img src="https://img.icons8.com/color/96/border-collie.png" style="width:70%; filter: brightness(1.2);">';
+    fab.innerHTML = '<img src="https://img.icons8.com/?size=96&id=P80zdAl7oXxp&format=png" style="width:70%; filter: brightness(1.2);">';
 
     fab.addEventListener('click', () => win.classList.toggle('show'));
     close.addEventListener('click', () => win.classList.remove('show'));
