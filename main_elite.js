@@ -91,8 +91,8 @@ function initInstBot() {
         console.warn('Could not load chat history:', e);
     }
 
-    // Gemini REST API endpoint
-    const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    // Gemini REST API endpoint (using v1 instead of v1beta to avoid 404)
+    const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
     async function callGeminiAPI(userMessage) {
         try {
